@@ -13,8 +13,8 @@
     --font-mono: 'JetBrains Mono', monospace;
     
     --container-width: 1440px;
-    --side-padding: 16px; /* Уменьшено до 16px как на Zapal */
-    --radius: 8px; /* Единый радиус для всех элементов */
+    --side-padding: 16px;
+    --radius: 8px;
 }
 
 * {
@@ -49,7 +49,7 @@ body {
     color: var(--accent-color);
 }
 
-/* --- 2. НАВИГАЦИЯ (как на Zapal) --- */
+/* --- 2. НАВИГАЦИЯ --- */
 .section-grid {
     border-bottom: 1px solid var(--border-color);
 }
@@ -97,7 +97,7 @@ body {
 
 .header__nav {
     display: flex;
-    gap: 32px;
+    gap: 24px;
 }
 
 .nav__link {
@@ -125,14 +125,14 @@ body {
     align-items: center;
 }
 
-/* --- 3. КНОПКИ (с закруглением) --- */
+/* --- 3. КНОПКИ --- */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 24px;
+    padding: 14px 28px;
     font-family: var(--font-body);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 600;
     text-decoration: none;
     border-radius: var(--radius);
@@ -173,7 +173,29 @@ body {
     margin-top: 16px;
 }
 
-/* --- 4. HERO СЕКЦИЯ --- */
+/* --- 4. ОБЩИЕ СТИЛИ СЕКЦИЙ --- */
+.section-header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 48px;
+    padding-top: 80px;
+}
+
+.section-header h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.section-cta {
+    margin-top: 48px;
+    display: flex;
+    justify-content: center;
+}
+
+/* --- 5. HERO --- */
 .hero {
     padding: 140px 0 100px;
     min-height: 85vh;
@@ -217,22 +239,7 @@ body {
     flex-wrap: wrap;
 }
 
-/* --- 5. СЕКЦИИ --- */
-.section-header {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-bottom: 64px;
-    padding-top: 80px;
-}
-
-.section-header h2 {
-    font-family: var(--font-heading);
-    font-size: 2.5rem;
-    color: var(--text-primary);
-    font-weight: 600;
-}
-
+/* --- 6. СЕТКА КАРТОЧЕК --- */
 .grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -245,7 +252,6 @@ body {
     border-right: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
     transition: background-color 0.3s ease;
-    border-radius: 0 0 var(--radius) 0;
 }
 
 .grid-card:hover {
@@ -267,7 +273,39 @@ body {
     font-weight: 600;
 }
 
-/* --- 6. КЕЙСЫ --- */
+.service-meta {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+    color: var(--accent-color);
+    font-size: 0.7rem;
+}
+
+/* --- 7. КЕЙСЫ --- */
+.cases-filters {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
 .cases-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -280,7 +318,6 @@ body {
     border-bottom: 1px solid var(--border-color);
     background-color: var(--bg-color);
     transition: background-color 0.3s ease;
-    border-radius: 0 0 var(--radius) 0;
 }
 
 .case-card:hover {
@@ -314,6 +351,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    gap: 16px;
 }
 
 .case-meta {
@@ -326,30 +364,209 @@ body {
     color: var(--accent-color);
     text-decoration: none;
     transition: opacity 0.3s;
+    white-space: nowrap;
 }
 
 .case-link:hover {
     opacity: 0.8;
 }
 
-/* --- 7. КОНТАКТЫ --- */
+/* --- 8. ПРОЦЕСС --- */
+.process-timeline {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
+}
+
+.process-step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    border-right: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
+}
+
+.process-step:hover {
+    background-color: var(--bg-card);
+}
+
+.step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+    border-right: 1px solid var(--border-color);
+    color: var(--accent-color);
+    font-size: 1rem;
+}
+
+.step-content {
+    padding: 32px;
+}
+
+.step-content h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+/* --- 9. КЛИЕНТЫ И ОТЗЫВЫ --- */
+.clients-logos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 64px;
+}
+
+.logo-placeholder {
+    aspect-ratio: 3 / 1;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.logo-placeholder:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.testimonial-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 32px;
+}
+
+.testimonial-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.author-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+}
+
+.author-name {
+    display: block;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.author-position {
+    font-size: 0.75rem;
+}
+
+/* --- 10. FAQ --- */
+.faq-list {
+    max-width: 800px;
+}
+
+.faq-item {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.faq-question {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: left;
+    transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+    color: var(--accent-color);
+}
+
+.faq-icon {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px;
+    padding-bottom: 24px;
+}
+
+.faq-answer p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* --- 11. КОНТАКТЫ --- */
+.contact-header {
+    padding-top: 80px;
+    margin-bottom: 48px;
+}
+
+.contact-header h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    color: var(--text-primary);
+    font-weight: 600;
+    line-height: 1.1;
+}
+
 .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
-    padding: 80px 0;
+    padding-bottom: 80px;
 }
 
-.contact-info h2 {
-    font-family: var(--font-heading);
-    font-size: 3rem;
-    color: var(--text-primary);
-    margin: 24px 0;
-    line-height: 1.1;
+.contact-info p {
+    font-size: 1.1rem;
+    margin-bottom: 32px;
+    line-height: 1.6;
 }
 
 .contact-links {
-    margin-top: 40px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -404,7 +621,7 @@ body {
 .form-status.success { color: #10B981; }
 .form-status.error { color: #EF4444; }
 
-/* --- 8. ФУТЕР --- */
+/* --- 12. ФУТЕР --- */
 .footer__inner {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
@@ -412,26 +629,24 @@ body {
     gap: 24px;
 }
 
-.footer__left {
+.footer__left,
+.footer__center,
+.footer__right {
     display: flex;
     align-items: center;
 }
 
 .footer__center {
-    display: flex;
-    align-items: center;
     justify-content: center;
 }
 
 .footer__right {
-    display: flex;
-    align-items: center;
     justify-content: flex-end;
 }
 
-/* --- 9. АДАПТИВНОСТЬ --- */
+/* --- 13. АДАПТИВНОСТЬ --- */
 @media (max-width: 1024px) {
-    .grid-3, .cases-grid {
+    .grid-3, .cases-grid, .testimonials-grid {
         grid-template-columns: 1fr;
         border-left: none;
     }
@@ -442,6 +657,12 @@ body {
     .contact-grid {
         grid-template-columns: 1fr;
         gap: 48px;
+    }
+    .clients-logos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .process-step {
+        grid-template-columns: 60px 1fr;
     }
     .header__nav {
         display: none;
@@ -473,5 +694,17 @@ body {
     .footer__center,
     .footer__right {
         justify-content: center;
+    }
+    .process-step {
+        grid-template-columns: 1fr;
+    }
+    .step-number {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 16px;
+    }
+    .case-info {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }

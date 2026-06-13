@@ -12,7 +12,45 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// 2. Отправка формы в Telegram
+// 2. FAQ Аккордеон
+document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        // Закрыть все
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        
+        // Открыть текущий, если он был закрыт
+        if (!isActive) {
+            item.classList.add('active');
+        }
+    });
+});
+
+// 3. Фильтры кейсов
+const filterBtns = document.querySelectorAll('.filter-btn');
+const caseCards = document.querySelectorAll('.case-card');
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Убрать активный класс у всех кнопок
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const filter = btn.dataset.filter;
+        
+        caseCards.forEach(card => {
+            if (filter === 'all' || card.dataset.category === filter) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+});
+
+// 4. Отправка формы в Telegram
 const form = document.getElementById('telegramForm');
 const statusText = document.getElementById('formStatus');
 const submitBtn = document.getElementById('submitBtn');
