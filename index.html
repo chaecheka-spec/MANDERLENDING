@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Веб-дизайн и интерфейсы | [ВАШЕ ИМЯ]</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Шрифты: Space Grotesk (заголовки), Manrope (текст), JetBrains Mono (технический) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Навигация в стиле Zapal: строгая, с разделителями -->
+    <header class="header">
+        <div class="container header__grid">
+            <div class="header__cell header__logo">
+                <span class="logo-text">[ВАШЕ ИМЯ]</span>
+                <span class="mono-tag">DESIGN / UI-UX</span>
+            </div>
+            <nav class="header__cell header__nav">
+                <a href="#approach" class="nav__link"><span class="mono-index">01</span> Подход</a>
+                <a href="#cases" class="nav__link"><span class="mono-index">02</span> Кейсы</a>
+                <a href="#contact" class="nav__link"><span class="mono-index">03</span> Контакты</a>
+            </nav>
+            <div class="header__cell header__status">
+                <span class="status-dot"></span>
+                <span class="mono-text">OPEN FOR PROJECTS</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Экран 1: Hero -->
+        <section class="hero section-grid">
+            <div class="container">
+                <div class="hero__meta mono-text">
+                    <span>LOC: [ВАШ ГОРОД] / REMOTE</span>
+                    <span>BUILD: 2026</span>
+                    <span>VER: 2.0.1</span>
+                </div>
+                <h1 class="hero__title">
+                    Проектирую интерфейсы,<br>
+                    которые <span class="text-accent">конвертируют</span><br>
+                    посетителей в клиентов.
+                </h1>
+                <p class="hero__subtitle">
+                    Помогаю бизнесу заменить устаревший визуал на системный, понятный и эстетичный цифровой продукт. Без срывов сроков, «исчезновений» и дизайна ради дизайна.
+                </p>
+                <div class="hero__actions">
+                    <a href="#contact" class="btn btn--primary">Обсудить проект</a>
+                    <a href="#cases" class="btn btn--outline">Смотреть работы ↓</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Экран 2: Подход -->
+        <section id="approach" class="approach section-grid">
+            <div class="container">
+                <div class="section-header">
+                    <span class="mono-tag">02 / ПОДХОД</span>
+                    <h2>Почему со мной спокойно</h2>
+                </div>
+                <div class="grid-3">
+                    <div class="grid-card">
+                        <span class="card-number mono-text">01</span>
+                        <h3>Язык бизнеса</h3>
+                        <p>Мне не нужно объяснять, что такое конверсия или дедлайн. Я фиксирую цену, сроки и объем правок в договоре до начала работы.</p>
+                    </div>
+                    <div class="grid-card">
+                        <span class="card-number mono-text">02</span>
+                        <h3>Дизайн на данных</h3>
+                        <p>Я не рисую «просто красиво». Анализирую конкурентов и аудиторию, чтобы создать интерфейс, который интуитивно ведет клиента к заявке.</p>
+                    </div>
+                    <div class="grid-card">
+                        <span class="card-number mono-text">03</span>
+                        <h3>Прозрачность</h3>
+                        <p>Сначала утверждаем прототип (логику), потом — визуал. Вы всегда знаете, на какой стадии проект. Никакой магии, только процесс.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Экран 3: Кейсы -->
+        <section id="cases" class="cases section-grid">
+            <div class="container">
+                <div class="section-header">
+                    <span class="mono-tag">03 / ИЗБРАННЫЕ РАБОТЫ</span>
+                    <h2>Кейсы и концепты</h2>
+                </div>
+                <div class="cases-grid">
+                    <!-- Кейс 1: Ваш будущий проект ТРК -->
+                    <article class="case-card">
+                        <div class="case-image">
+                            <div class="case-placeholder">
+                                <span class="mono-tag">CONCEPT / В РАЗРАБОТКЕ</span>
+                                <h3>Редизайн сайта ТРК</h3>
+                                <p>Концептуальная проработка навигации и визуального стиля для крупного торгово-развлекательного комплекса.</p>
+                            </div>
+                        </div>
+                        <div class="case-info">
+                            <div class="case-meta">
+                                <span class="mono-text">НИША: Retail / Real Estate</span>
+                                <span class="mono-text">РОЛЬ: UI/UX Design</span>
+                            </div>
+                            <a href="#" class="case-link mono-text">Смотреть детали ↗</a>
+                        </div>
+                    </article>
+
+                    <!-- Кейс 2: Заглушка для будущего реального проекта -->
+                    <article class="case-card">
+                        <div class="case-image">
+                            <div class="case-placeholder">
+                                <span class="mono-tag">COMING SOON</span>
+                                <h3>Сайт для IT-стартапа</h3>
+                                <p>Здесь скоро появится ваш первый коммерческий проект с реальными цифрами и результатами.</p>
+                            </div>
+                        </div>
+                        <div class="case-info">
+                            <div class="case-meta">
+                                <span class="mono-text">НИША: B2B / SaaS</span>
+                                <span class="mono-text">РОЛЬ: Web Design</span>
+                            </div>
+                            <a href="#" class="case-link mono-text">Смотреть детали ↗</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Экран 4: Контакты и Форма -->
+        <section id="contact" class="contact section-grid">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <span class="mono-tag">04 / КОНТАКТЫ</span>
+                        <h2>Давайте создадим<br>что-то значимое.</h2>
+                        <p>Опишите вашу задачу, и я свяжусь с вами в течение 24 часов для обсуждения деталей.</p>
+                        <div class="contact-links">
+                            <a href="https://t.me/[ВАШ_TELEGRAM]" target="_blank" class="contact-link mono-text">TELEGRAM ↗</a>
+                            <a href="mailto:your@email.com" class="contact-link mono-text">EMAIL ↗</a>
+                        </div>
+                    </div>
+                    
+                    <form id="telegramForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name" class="mono-text">ВАШЕ ИМЯ</label>
+                            <input type="text" id="name" name="name" required placeholder="Иван Иванов">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact_method" class="mono-text">ТЕЛЕГРАМ ИЛИ ПОЧТА</label>
+                            <input type="text" id="contact_method" name="contact_method" required placeholder="@username или email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="mono-text">ОПИСАНИЕ ЗАДАЧИ</label>
+                            <textarea id="message" name="message" rows="4" required placeholder="Мне нужен редизайн сайта..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full" id="submitBtn">Отправить заявку</button>
+                        <p id="formStatus" class="form-status mono-text"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer section-grid">
+        <div class="container footer__grid">
+            <div class="footer__cell">
+                <span class="mono-text">© 2026 [ВАШЕ ИМЯ]</span>
+            </div>
+            <div class="footer__cell footer__center">
+                <span class="mono-text">DESIGNED IN FIGMA / CODED WITH CARE</span>
+            </div>
+            <div class="footer__cell footer__right">
+                <span class="mono-text">v.2.0.1</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
