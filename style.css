@@ -1,18 +1,19 @@
-﻿/* --- 1. ПЕРЕМЕННЫЕ (Темная тема + Синий акцент) --- */
+﻿/* --- 1. ПЕРЕМЕННЫЕ --- */
 :root {
-    --bg-color: #050505;         /* Глубокий черный */
-    --bg-card: #0A0A0A;          /* Чуть светлее для карточек */
-    --text-primary: #FFFFFF;     /* Белый для заголовков */
-    --text-secondary: #A1A1AA;   /* Серый для текста */
-    --accent-color: #2563EB;     /* Яркий синий (Electric Blue) */
-    --accent-hover: #1D4ED8;     /* Темно-синий для ховера */
-    --border-color: #27272A;     /* Тонкие границы сетки */
+    --bg-color: #050505;
+    --bg-card: #0A0A0A;
+    --text-primary: #FFFFFF;
+    --text-secondary: #A1A1AA;
+    --accent-color: #2563EB;
+    --accent-hover: #1D4ED8;
+    --border-color: #27272A;
     
     --font-heading: 'Space Grotesk', sans-serif;
     --font-body: 'Manrope', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
     
-    --container-width: 1280px;
+    --container-width: 1400px;
+    --side-padding: 24px;
 }
 
 * {
@@ -32,7 +33,7 @@ body {
 .container {
     max-width: var(--container-width);
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0 var(--side-padding);
 }
 
 .mono-text, .mono-tag, .mono-index {
@@ -47,7 +48,7 @@ body {
     color: var(--accent-color);
 }
 
-/* --- 2. СЕТКА И НАВИГАЦИЯ (Zapal Style) --- */
+/* --- 2. НАВИГАЦИЯ --- */
 .section-grid {
     border-bottom: 1px solid var(--border-color);
 }
@@ -55,7 +56,7 @@ body {
 .header {
     position: sticky;
     top: 0;
-    background: rgba(5, 5, 5, 0.85);
+    background: rgba(5, 5, 5, 0.95);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
     z-index: 1000;
@@ -116,13 +117,22 @@ body {
     color: var(--accent-color);
 }
 
-.status-dot {
-    width: 6px;
-    height: 6px;
-    background-color: #10B981; /* Зеленый индикатор */
-    border-radius: 50%;
-    margin-right: 8px;
-    box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+.btn--small {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+}
+
+.btn--nav {
+    background-color: var(--accent-color);
+    color: #FFFFFF;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn--nav:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-1px);
 }
 
 /* --- 3. HERO СЕКЦИЯ --- */
@@ -211,7 +221,7 @@ body {
     margin-top: 16px;
 }
 
-/* --- 5. СЕКЦИИ И СЕТКА --- */
+/* --- 5. СЕКЦИИ --- */
 .section-header {
     display: flex;
     flex-direction: column;
@@ -324,7 +334,7 @@ body {
     opacity: 0.8;
 }
 
-/* --- 7. КОНТАКТЫ И ФОРМА --- */
+/* --- 7. КОНТАКТЫ --- */
 .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;

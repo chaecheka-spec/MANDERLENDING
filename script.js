@@ -1,4 +1,4 @@
-// 1. Плавный скролл по якорным ссылкам
+// 1. Плавный скролл
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -17,25 +17,22 @@ const form = document.getElementById('telegramForm');
 const statusText = document.getElementById('formStatus');
 const submitBtn = document.getElementById('submitBtn');
 
-// ⚠️ ЗАМЕНИТЕ ЭТИ ДАННЫЕ НА СВОИ (Инструкция ниже)
-const BOT_TOKEN = 'ВАШ_BOT_TOKEN';
-const CHAT_ID = 'ВАШ_CHAT_ID';
+// ⚠️ ЗАМЕНИТЕ НА СВОИ ДАННЫЕ
+const BOT_TOKEN = 'ВАШ_BOT_TOKEN'; 
+const CHAT_ID = 'ВАШ_CHAT_ID'; 
 
-form.addEventListener('submit', async function (e) {
+form.addEventListener('submit', async function(e) {
     e.preventDefault();
-
-    // Блокируем кнопку на время отправки
+    
     submitBtn.disabled = true;
     submitBtn.textContent = 'Отправка...';
     statusText.textContent = '';
     statusText.className = 'form-status mono-text';
 
-    // Собираем данные
     const name = document.getElementById('name').value;
     const contact = document.getElementById('contact_method').value;
     const message = document.getElementById('message').value;
 
-    // Формируем красивое сообщение для Telegram
     const text = `
 🔔 *Новая заявка с сайта!*
 
