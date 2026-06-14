@@ -1,8 +1,10 @@
 // 1. Плавный скролл
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const target = document.querySelector(href);
         if (target) {
             target.scrollIntoView({
                 behavior: 'smooth',
@@ -28,29 +30,53 @@ document.querySelectorAll('.faq-question').forEach(button => {
     });
 });
 
-// 3. Фильтры кейсов
-const filterBtns = document.querySelectorAll('.filter-btn');
-const caseCards = document.querySelectorAll('.case-card');
+// 3. АНИМАЦИЯ ПРОЦЕССА ПРИ СКРОЛЛЕ (Intersection Observer)
+const processSteps = document.querySelectorAll('.process-step');
+const processLine = document.querySelector('.process-line__progress');
 
-filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Убрать активный класс у всех кнопок
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        
-        const filter = btn.dataset.filter;
-        
-        caseCards.forEach(card => {
-            if (filter === 'all' || card.dataset.category === filter) {
-                card.style.display = 'block';
-            } else {
-                card.style.display = 'none';
-            }
-        });
+const processObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            updateProcessLine();
+        }
     });
+}, {
+    threshold: 0.3,
+    rootMargin: '0px 0px -100px 0px'
 });
 
-// 4. Отправка формы в Telegram
+processSteps.forEach(step => processObserver.observe(step));
+
+// Обновление линии прогресса
+function updateProcessLine() {
+    const visibleSteps = document.querySelectorAll('.process-step.visible');
+    const totalSteps = processSteps.length;
+    const progress = (visibleSteps.length / totalSteps) * 100;
+    if (processLine) {
+        processLine.style.height = progress + '%';
+    }
+}
+
+// 4. АНИМАЦИЯ ПОЯВЛЕНИЯ БЛОКОВ ПРИ СКРОЛЛЕ
+const animateOnScroll = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, { threshold: 0.1 });
+
+// Применяем к секциям
+document.querySelectorAll('.section-header, .grid-card, .service-row, .case-card, .testimonial-card, .faq-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    animateOnScroll.observe(el);
+});
+
+// 5. Отправка формы в Telegram
 const form = document.getElementById('telegramForm');
 const statusText = document.getElementById('formStatus');
 const submitBtn = document.getElementById('submitBtn');

@@ -27,7 +27,7 @@
                     <a href="#contact" class="nav__link"><span class="mono-index">05</span> Контакты</a>
                 </nav>
                 <div class="header__cta">
-                    <a href="#contact" class="btn btn--small">Обсудить проект</a>
+                    <a href="#contact" class="btn btn--small btn--outline">Обсудить проект</a>
                 </div>
             </div>
         </div>
@@ -51,13 +51,13 @@
                     Превращаю сложные задачи в понятные и эстетичные интерфейсы. Работаю прозрачно, в срок и с фокусом на ваш результат.
                 </p>
                 <div class="hero__actions">
-                    <a href="#contact" class="btn btn--primary">Обсудить мой проект</a>
+                    <a href="#contact" class="btn btn--primary">Мой проект</a>
                     <a href="#cases" class="btn btn--outline">Смотреть портфолио ↓</a>
                 </div>
             </div>
         </section>
 
-        <!-- ЭКРАН 2: ПОДХОД -->
+        <!-- ЭКРАН 2: ПОДХОД (карточки) -->
         <section id="approach" class="approach section-grid">
             <div class="container">
                 <div class="section-header">
@@ -82,42 +82,42 @@
                     </div>
                 </div>
                 <div class="section-cta">
-                    <a href="https://t.me/ВАШ_TELEGRAM" target="_blank" class="btn btn--outline">Такой подход вам близок? Давайте познакомимся</a>
+                    <a href="https://t.me/CheZaDesignn" target="_blank" class="btn btn--outline">Такой подход вам близок? Давайте познакомимся</a>
                 </div>
             </div>
         </section>
 
-        <!-- ЭКРАН 3: УСЛУГИ -->
+        <!-- ЭКРАН 3: УСЛУГИ (горизонтальные строки — другой стиль!) -->
         <section id="services" class="services section-grid">
             <div class="container">
                 <div class="section-header">
-                    <span class="mono-tag">02 / ЧЕМ Я МОГУ БЫТЬ ПОЛЕЗЕН</span>
+                    <span class="mono-tag">02 / ЧЕМ Я МОГУ БЫТЬ ПОЛЕЗНА</span>
                     <h2>Услуги и форматы</h2>
                 </div>
-                <div class="grid-3">
-                    <div class="grid-card service-card">
-                        <span class="card-number mono-text">01</span>
-                        <h3>Лендинг / Сайт</h3>
-                        <p>От прототипа до готового макета с адаптивом под все устройства. С фокусом на конверсию и удобство пользователя.</p>
-                        <div class="service-meta mono-text">
-                            <span>СРОКИ: ОТ 2 НЕДЕЛЬ</span>
+                <div class="services-list">
+                    <div class="service-row">
+                        <div class="service-row__num mono-text">01</div>
+                        <div class="service-row__content">
+                            <h3>Лендинг / Сайт</h3>
+                            <p>От прототипа до готового макета с адаптивом под все устройства. С фокусом на конверсию и удобство пользователя.</p>
                         </div>
+                        <div class="service-row__meta mono-text">ОТ 2 НЕДЕЛЬ</div>
                     </div>
-                    <div class="grid-card service-card">
-                        <span class="card-number mono-text">02</span>
-                        <h3>Айдентика</h3>
-                        <p>Логотип, цвета, типографика и базовый гайдлайн. Создаю визуальный язык, который выделяет вас среди конкурентов.</p>
-                        <div class="service-meta mono-text">
-                            <span>СРОКИ: ОТ 1 НЕДЕЛИ</span>
+                    <div class="service-row">
+                        <div class="service-row__num mono-text">02</div>
+                        <div class="service-row__content">
+                            <h3>Айдентика</h3>
+                            <p>Логотип, цвета, типографика и базовый гайдлайн. Создаю визуальный язык, который выделяет вас среди конкурентов.</p>
                         </div>
+                        <div class="service-row__meta mono-text">ОТ 1 НЕДЕЛИ</div>
                     </div>
-                    <div class="grid-card service-card">
-                        <span class="card-number mono-text">03</span>
-                        <h3>Редизайн</h3>
-                        <p>Анализ текущего сайта и его визуальное/структурное обновление. Сохраняю то, что работает, и усиливаю слабые места.</p>
-                        <div class="service-meta mono-text">
-                            <span>СРОКИ: ОТ 10 ДНЕЙ</span>
+                    <div class="service-row">
+                        <div class="service-row__num mono-text">03</div>
+                        <div class="service-row__content">
+                            <h3>Редизайн</h3>
+                            <p>Анализ текущего сайта и его визуальное/структурное обновление. Сохраняю то, что работает, и усиливаю слабые места.</p>
                         </div>
+                        <div class="service-row__meta mono-text">ОТ 10 ДНЕЙ</div>
                     </div>
                 </div>
                 <div class="section-cta">
@@ -126,20 +126,15 @@
             </div>
         </section>
 
-        <!-- ЭКРАН 4: КЕЙСЫ -->
+        <!-- ЭКРАН 4: КЕЙСЫ (без фильтров, с двумя кнопками) -->
         <section id="cases" class="cases section-grid">
             <div class="container">
                 <div class="section-header">
                     <span class="mono-tag">03 / ИЗБРАННЫЕ РАБОТЫ</span>
                     <h2>Кейсы и концепты</h2>
                 </div>
-                <div class="cases-filters mono-text">
-                    <button class="filter-btn active" data-filter="all">Все</button>
-                    <button class="filter-btn" data-filter="web">Сайты</button>
-                    <button class="filter-btn" data-filter="identity">Айдентика</button>
-                </div>
                 <div class="cases-grid">
-                    <article class="case-card" data-category="web">
+                    <article class="case-card">
                         <div class="case-image">
                             <div class="case-placeholder">
                                 <span class="mono-tag">CONCEPT / В РАЗРАБОТКЕ</span>
@@ -157,7 +152,7 @@
                         </div>
                     </article>
 
-                    <article class="case-card" data-category="web">
+                    <article class="case-card">
                         <div class="case-image">
                             <div class="case-placeholder">
                                 <span class="mono-tag">COMING SOON</span>
@@ -175,13 +170,14 @@
                         </div>
                     </article>
                 </div>
-                <div class="section-cta">
-                    <a href="#contact" class="btn btn--primary">Хотите такой же результат для своего проекта? Обсудить похожую задачу</a>
+                <div class="section-cta section-cta--double">
+                    <a href="#contact" class="btn btn--primary">Хотите такой же результат? Обсудить задачу</a>
+                    <a href="#" class="btn btn--outline">Смотреть ещё работы</a>
                 </div>
             </div>
         </section>
 
-        <!-- ЭКРАН 5: ПРОЦЕСС -->
+        <!-- ЭКРАН 5: ПРОЦЕСС (креативный таймлайн с анимацией) -->
         <section id="process" class="process section-grid">
             <div class="container">
                 <div class="section-header">
@@ -189,30 +185,45 @@
                     <h2>Процесс работы</h2>
                 </div>
                 <div class="process-timeline">
-                    <div class="process-step">
-                        <span class="step-number mono-text">01</span>
-                        <div class="step-content">
+                    <div class="process-line">
+                        <div class="process-line__progress"></div>
+                    </div>
+                    <div class="process-step" data-step="1">
+                        <div class="process-step__marker">
+                            <div class="marker-dot"></div>
+                            <span class="step-number mono-text">01</span>
+                        </div>
+                        <div class="process-step__content">
                             <h3>Бриф и аналитика</h3>
-                            <p>Созваниваемся на 20 минут, обсуждаем детали, цели и задачи вашего проекта.</p>
+                            <p>Созваниваемся на 20 минут, обсуждаем детали, цели и задачи вашего проекта. Погружаюсь в вашу нишу.</p>
                         </div>
                     </div>
-                    <div class="process-step">
-                        <span class="step-number mono-text">02</span>
-                        <div class="step-content">
+                    <div class="process-step" data-step="2">
+                        <div class="process-step__marker">
+                            <div class="marker-dot"></div>
+                            <span class="step-number mono-text">02</span>
+                        </div>
+                        <div class="process-step__content">
                             <h3>Прототип</h3>
-                            <p>Согласовываем структуру и тексты без отвлекающего дизайна. Фокус на логике.</p>
+                            <p>Согласовываем структуру и тексты без отвлекающего дизайна. Фокус на логике и пользовательском пути.</p>
                         </div>
                     </div>
-                    <div class="process-step">
-                        <span class="step-number mono-text">03</span>
-                        <div class="step-content">
+                    <div class="process-step" data-step="3">
+                        <div class="process-step__marker">
+                            <div class="marker-dot"></div>
+                            <span class="step-number mono-text">03</span>
+                        </div>
+                        <div class="process-step__content">
                             <h3>Дизайн-концепция</h3>
-                            <p>Показываю 1-2 варианта визуального стиля. Выбираем тот, что ближе вашему бренду.</p>
+                            <p>Показываю 1-2 варианта визуального стиля. Выбираем тот, что ближе вашему бренду и целям.</p>
                         </div>
                     </div>
-                    <div class="process-step">
-                        <span class="step-number mono-text">04</span>
-                        <div class="step-content">
+                    <div class="process-step" data-step="4">
+                        <div class="process-step__marker">
+                            <div class="marker-dot"></div>
+                            <span class="step-number mono-text">04</span>
+                        </div>
+                        <div class="process-step__content">
                             <h3>Финализация и передача</h3>
                             <p>Отдаю все исходники, гайдлайны и помогаю с запуском. Поддержка после сдачи проекта.</p>
                         </div>
@@ -224,7 +235,7 @@
             </div>
         </section>
 
-        <!-- ЭКРАН 6: ОТЗЫВЫ И КЛИЕНТЫ -->
+        <!-- ЭКРАН 6: ОТЗЫВЫ -->
         <section id="clients" class="clients section-grid">
             <div class="container">
                 <div class="section-header">
@@ -262,48 +273,68 @@
             </div>
         </section>
 
-        <!-- ЭКРАН 7: FAQ -->
+        <!-- ЭКРАН 7: FAQ (с красивыми блоками) -->
         <section id="faq" class="faq section-grid">
             <div class="container">
                 <div class="section-header">
-                    <span class="mono-tag">06 / ЧАСТЫЕ ВОПРОСЫ</span>
-                    <h2>FAQ</h2>
+                    <span class="mono-tag">06 / ОТВЕТЫ НА ВОПРОСЫ</span>
+                    <h2>Часто задаваемые вопросы</h2>
                 </div>
                 <div class="faq-list">
                     <div class="faq-item">
                         <button class="faq-question">
-                            <span>Как формируется цена?</span>
-                            <span class="faq-icon">+</span>
+                            <span class="faq-q-text">Как формируется цена?</span>
+                            <span class="faq-icon">
+                                <span class="icon-line"></span>
+                                <span class="icon-line"></span>
+                            </span>
                         </button>
                         <div class="faq-answer">
-                            <p>Цена зависит от объема работ и сложности проекта. После brief-созвона я предоставляю детальную смету с фиксированной стоимостью. Никаких скрытых платежей.</p>
+                            <div class="faq-answer__inner">
+                                <p>Цена зависит от объема работ и сложности проекта. После brief-созвона я предоставляю детальную смету с фиксированной стоимостью. Никаких скрытых платежей.</p>
+                            </div>
                         </div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-question">
-                            <span>Сколько правок включено?</span>
-                            <span class="faq-icon">+</span>
+                            <span class="faq-q-text">Сколько правок включено?</span>
+                            <span class="faq-icon">
+                                <span class="icon-line"></span>
+                                <span class="icon-line"></span>
+                            </span>
                         </button>
                         <div class="faq-answer">
-                            <p>В каждый этап включено 2-3 раунда правок. Этого достаточно, чтобы довести результат до идеала. Дополнительные правки обсуждаются отдельно.</p>
+                            <div class="faq-answer__inner">
+                                <p>В каждый этап включено 2-3 раунда правок. Этого достаточно, чтобы довести результат до идеала. Дополнительные правки обсуждаются отдельно.</p>
+                            </div>
                         </div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-question">
-                            <span>Работаете ли по договору?</span>
-                            <span class="faq-icon">+</span>
+                            <span class="faq-q-text">Работаете ли по договору?</span>
+                            <span class="faq-icon">
+                                <span class="icon-line"></span>
+                                <span class="icon-line"></span>
+                            </span>
                         </button>
                         <div class="faq-answer">
-                            <p>Да, обязательно. Мы фиксируем цену, сроки и объем работ в договоре до начала проекта. Это защищает обе стороны и дает уверенность в результате.</p>
+                            <div class="faq-answer__inner">
+                                <p>Да, обязательно. Мы фиксируем цену, сроки и объем работ в договоре до начала проекта. Это защищает обе стороны и дает уверенность в результате.</p>
+                            </div>
                         </div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-question">
-                            <span>Что если я не успею оплатить в срок?</span>
-                            <span class="faq-icon">+</span>
+                            <span class="faq-q-text">Что если я не успею оплатить в срок?</span>
+                            <span class="faq-icon">
+                                <span class="icon-line"></span>
+                                <span class="icon-line"></span>
+                            </span>
                         </button>
                         <div class="faq-answer">
-                            <p>Мы всегда можем обсудить гибкий график оплаты. Обычно работа начинается после предоплаты 50%, остаток — после сдачи проекта.</p>
+                            <div class="faq-answer__inner">
+                                <p>Мы всегда можем обсудить гибкий график оплаты. Обычно работа начинается после предоплаты 50%, остаток — после сдачи проекта.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -320,8 +351,8 @@
                     <div class="contact-info">
                         <p>Опишите вашу задачу, и я свяжусь с вами в течение 24 часов для обсуждения деталей.</p>
                         <div class="contact-links">
-                            <a href="https://t.me/ВАШ_TELEGRAM" target="_blank" class="contact-link mono-text">TELEGRAM ↗</a>
-                            <a href="mailto:your@email.com" class="contact-link mono-text">EMAIL </a>
+                            <a href="https://t.me/CheZaDesignn" target="_blank" class="contact-link mono-text">TELEGRAM ↗</a>
+                            <a href="mailto:yaninamander@yandex.ru" class="contact-link mono-text">EMAIL ↗</a>
                             <a href="#" class="contact-link mono-text">BEHANCE ↗</a>
                             <a href="#" class="contact-link mono-text">DRIBBBLE ↗</a>
                         </div>
@@ -358,7 +389,7 @@
                     <span class="mono-text">Дизайн с заботой о деталях</span>
                 </div>
                 <div class="footer__right">
-                    <span class="mono-text">v.2.1</span>
+                    <span class="mono-text">v.2.2</span>
                 </div>
             </div>
         </div>
