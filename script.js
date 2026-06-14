@@ -87,10 +87,60 @@ document.querySelectorAll('.faq-question').forEach(button => {
     });
 });
 
-// 6. АНИМАЦИЯ ПРОЦЕССА (ПЛАВНОЕ ЗАПОЛНЕНИЕ ЗМЕЙКИ ПРИ СКРОЛЛЕ)
+// 6. АНИМАЦИЯ ПРОЦЕССА (НЕПРЕРЫВНАЯ ЗМЕЙКА)
+const processSection = document.getElementById('process');
+const snakeSvg = document.getElementById('processSnake');
+const snakeBg = document.getElementById('snakeBg');
+const snakeFill = document.getElementById('snakeFill');
 const processSteps = document.querySelectorAll('.process-step');
-const snakeWrappers = document.querySelectorAll('.process-snake-wrapper');
-const snakeFills = document.querySelectorAll('.snake-fill');
+
+// Генерация пути змейки
+function generateSnakePath() {
+    const sectionRect = processSection.getBoundingClientRect();
+    const header = processSection.querySelector('.section-header');
+    const cta = processSection.querySelector('.section-cta');
+    const headerRect = header.getBoundingClientRect();
+    const ctaRect = cta.getBoundingClientRect();
+    
+    // Координаты относительно секции
+    const startX = headerRect.left - sectionRect.left + headerRect.width / 2;
+    const startY = headerRect.bottom - sectionRect.top;
+    const endX = ctaRect.left - sectionRect.left + ctaRect.width / 2;
+    const endY = ctaRect.top - sectionRect.top;
+    
+    const steps = Array.from(processSteps);
+    const stepPositions = steps.map(step => {
+        const rect = step.getBoundingClientRect();
+        return {
+            x: rect.left - sectionRect.left + (steps.indexOf(step) % 2 === 0 ? rect.width : 0),
+            y: rect.top - sectionRect.top + rect.height / 2
+        };
+    });
+    
+    // Строим путь змейки
+    let path = `M ${startX} ${startY}`;
+    
+    // Идём к первой карточке
+    if (stepPositions[0]) {
+        path += ` L ${stepPositions[0].x} ${stepPositions[0].y}`;
+    }
+    
+    // Змейка между карточками
+    for (let i = 0; i < stepPositions.length - 1; i++) {
+        const current = stepPositions[i];
+        const next = stepPositions[i + 1];
+        const midY = (current.y + next.y) / 2;
+        const controlX = i % 2 === 0 ? sectionRect.width * 0.8 : sectionRect.width * 0.2;
+        
+        path += ` C ${controlX} ${midY - 30}, ${controlX} ${midY + 30}, ${next.x} ${next.y}`;
+    }
+    
+    // Идём к кнопке
+    path += ` L ${endX} ${endY}`;
+    
+    snakeBg.setAttribute('d', path);
+    snakeFill.setAttribute('d', path);
+}
 
 // Появление карточек при скролле
 const processObserver = new IntersectionObserver((entries) => {
@@ -106,36 +156,37 @@ const processObserver = new IntersectionObserver((entries) => {
 
 processSteps.forEach(step => processObserver.observe(step));
 
-// Плавное заполнение змеек при скролле
-function updateSnakes() {
-    snakeWrappers.forEach((wrapper, index) => {
-        const rect = wrapper.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        const snakeFill = snakeFills[index];
-        
-        if (!snakeFill) return;
-        
-        // Вычисляем, насколько змейка видна в viewport
-        // 0 = только появилась снизу, 1 = полностью прошла через верх
-        const startPoint = windowHeight; // змейка появляется снизу экрана
-        const endPoint = -rect.height;   // змейка исчезает сверху
-        
-        const progress = (startPoint - rect.top) / (startPoint - endPoint);
-        const clampedProgress = Math.max(0, Math.min(1, progress));
-        
-        // Длина линии (подбираем под SVG path)
-        const pathLength = 500;
-        const offset = pathLength * (1 - clampedProgress);
-        
-        snakeFill.style.strokeDashoffset = offset;
-    });
+// Заполнение змейки при скролле
+function updateSnakeFill() {
+    const sectionRect = processSection.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    
+    // Вычисляем прогресс скролла блока
+    const sectionTop = sectionRect.top;
+    const sectionHeight = sectionRect.height;
+    
+    // 0 = блок только появился снизу, 1 = блок полностью прошёл
+    const progress = (windowHeight - sectionTop) / (windowHeight + sectionHeight);
+    const clampedProgress = Math.max(0, Math.min(1, progress));
+    
+    // Длина пути (примерно)
+    const pathLength = 3000;
+    const offset = pathLength * (1 - clampedProgress);
+    
+    snakeFill.style.strokeDashoffset = offset;
 }
 
-// Запускаем при скролле
-window.addEventListener('scroll', updateSnakes, { passive: true });
-window.addEventListener('resize', updateSnakes);
-// Первичный вызов
-setTimeout(updateSnakes, 100);
+// Инициализация
+window.addEventListener('load', () => {
+    generateSnakePath();
+    updateSnakeFill();
+});
+
+window.addEventListener('resize', () => {
+    generateSnakePath();
+});
+
+window.addEventListener('scroll', updateSnakeFill, { passive: true });
 
 processSteps.forEach(step => processObserver.observe(step));
 

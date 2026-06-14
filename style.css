@@ -263,12 +263,14 @@ body {
 }
 
 .hero .container {
-    padding-left: 24px; /* Выравниваем с меню */
-    padding-right: 24px;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 24px; /* Выравниваем с меню */
 }
 
 .hero__content {
     max-width: 900px;
+    margin-left: 0; /* Прижимаем к левому краю */
 }
 
 .hero__meta {
@@ -529,17 +531,54 @@ body {
     opacity: 0.8;
 }
 
-/* --- 9. ПРОЦЕСС (ВЕРТИКАЛЬНАЯ ЗМЕЙКА) --- */
-.process-timeline {
+/* --- 9. ПРОЦЕСС (НЕПРЕРЫВНАЯ ЗМЕЙКА) --- */
+.process-timeline-wrapper {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+.process-snake-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.snake-bg {
+    fill: none;
+    stroke: var(--border-color);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.snake-fill {
+    fill: none;
+    stroke: var(--accent-color);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 3000;
+    stroke-dashoffset: 3000;
+    filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.6));
+    transition: stroke-dashoffset 0.1s linear;
+}
+
+.process-steps {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    max-width: 800px;
-    margin: 0 auto;
+    gap: 40px;
 }
 
 .process-step {
-    width: 100%;
+    width: 50%;
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.6s ease;
@@ -550,11 +589,21 @@ body {
     transform: translateY(0);
 }
 
+.process-step:nth-child(odd) {
+    align-self: flex-end;
+    padding-left: 60px;
+}
+
+.process-step:nth-child(even) {
+    align-self: flex-start;
+    padding-right: 60px;
+}
+
 .process-step__content {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius);
-    padding: 36px;
+    padding: 32px;
     transition: all 0.4s ease;
 }
 
@@ -594,56 +643,16 @@ body {
     font-size: 1.05rem;
 }
 
-/* Обёртка змейки */
-.process-snake-wrapper {
-    width: 200px;
-    height: 120px;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    margin: 0;
-}
-
-.process-snake {
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-}
-
-/* Фоновая (серая) линия змейки */
-.snake-bg {
-    fill: none;
-    stroke: var(--border-color);
-    stroke-width: 6;
-    stroke-linecap: round;
-}
-
-/* Заполняющаяся (синяя) линия змейки */
-.snake-fill {
-    fill: none;
-    stroke: url(#snakeGradient);
-    stroke: var(--accent-color);
-    stroke-width: 6;
-    stroke-linecap: round;
-    stroke-dasharray: 500;
-    stroke-dashoffset: 500;
-    transition: stroke-dashoffset 0.1s linear;
-    filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.5));
-}
-
 /* Адаптивность */
 @media (max-width: 768px) {
-    .process-snake-wrapper {
-        width: 120px;
-        height: 80px;
+    .process-step {
+        width: 100%;
+        padding-left: 40px !important;
+        padding-right: 0 !important;
     }
     
-    .process-step__content {
-        padding: 24px;
-    }
-    
-    .process-step__content h3 {
-        font-size: 1.3rem;
+    .process-step:nth-child(even) {
+        padding-right: 0;
     }
 }
 
