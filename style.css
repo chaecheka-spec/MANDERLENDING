@@ -820,9 +820,67 @@ body {
     font-size: 0.75rem;
 }
 
-/* --- 11. FAQ --- */
+/* --- 11. FAQ (С ВЕРТИКАЛЬНЫМИ БЕГУЩИМИ СТРОКАМИ) --- */
 .faq {
     padding-bottom: 120px;
+}
+
+.faq__container {
+    display: grid;
+    grid-template-columns: 80px 1fr 80px;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Вертикальные бегущие строки */
+.faq-vertical-marquee {
+    position: sticky;
+    top: 120px;
+    height: 70vh; /* Высота видимой области */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.faq-vertical-marquee__track {
+    display: flex;
+    flex-direction: column;
+    animation: marqueeVertical 25s linear infinite;
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    writing-mode: vertical-rl; /* Вертикальный текст */
+    text-orientation: mixed;
+    white-space: nowrap;
+    color: var(--border-color);
+}
+
+/* Левая строка — приглушённая, серая */
+.faq-vertical-marquee--left .faq-vertical-marquee__track {
+    color: var(--border-color);
+    opacity: 0.6;
+}
+
+/* Правая строка — синяя, в другую сторону */
+.faq-vertical-marquee--right .faq-vertical-marquee__track {
+    color: var(--accent-color);
+    opacity: 0.25;
+    animation-direction: reverse; /* Движение в обратную сторону */
+}
+
+@keyframes marqueeVertical {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+/* Центральный контент FAQ */
+.faq__content {
+    min-width: 0; /* Важно для grid */
 }
 
 .faq-list {
@@ -963,6 +1021,24 @@ body {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* --- АДАПТИВНОСТЬ FAQ --- */
+@media (max-width: 1024px) {
+    .faq__container {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .faq-vertical-marquee {
+        display: none; /* Скрываем вертикальные строки на планшетах и мобильных */
+    }
+}
+
+@media (max-width: 768px) {
+    .faq-cta-card {
+        padding: 32px 24px;
+    }
 }
 
 /* --- 12. КОНТАКТЫ --- */
