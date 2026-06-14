@@ -823,23 +823,28 @@ body {
 /* --- 11. FAQ (С ВЕРТИКАЛЬНЫМИ БЕГУЩИМИ СТРОКАМИ) --- */
 .faq {
     padding-bottom: 120px;
+    position: relative;
+    overflow: hidden;
 }
 
-.faq__container {
-    display: grid;
-    grid-template-columns: 80px 1fr 80px;
-    gap: 40px;
-    align-items: start;
-}
-
-/* Вертикальные бегущие строки */
+/* Вертикальные бегущие строки - абсолютное позиционирование */
 .faq-vertical-marquee {
-    position: sticky;
-    top: 120px;
-    height: 70vh; /* Высота видимой области */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
     overflow: hidden;
     display: flex;
     align-items: center;
+    z-index: 1;
+}
+
+.faq-vertical-marquee--left {
+    left: 0;
+}
+
+.faq-vertical-marquee--right {
+    right: 0;
 }
 
 .faq-vertical-marquee__track {
@@ -850,10 +855,9 @@ body {
     font-size: 1.4rem;
     font-weight: 600;
     letter-spacing: 0.15em;
-    writing-mode: vertical-rl; /* Вертикальный текст */
+    writing-mode: vertical-rl;
     text-orientation: mixed;
     white-space: nowrap;
-    color: var(--border-color);
 }
 
 /* Левая строка — приглушённая, серая */
@@ -865,8 +869,8 @@ body {
 /* Правая строка — синяя, в другую сторону */
 .faq-vertical-marquee--right .faq-vertical-marquee__track {
     color: var(--accent-color);
-    opacity: 0.25;
-    animation-direction: reverse; /* Движение в обратную сторону */
+    opacity: 0.3;
+    animation-direction: reverse;
 }
 
 @keyframes marqueeVertical {
@@ -879,13 +883,13 @@ body {
 }
 
 /* Центральный контент FAQ */
-.faq__content {
-    min-width: 0; /* Важно для grid */
+.faq .container {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
 }
 
 .faq-list {
-    max-width: 900px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -993,8 +997,7 @@ body {
 }
 
 .faq-bottom-cta {
-    max-width: 900px;
-    margin: 80px auto 0;
+    margin-top: 80px;
 }
 
 .faq-cta-card {
@@ -1024,14 +1027,19 @@ body {
 }
 
 /* --- АДАПТИВНОСТЬ FAQ --- */
-@media (max-width: 1024px) {
-    .faq__container {
-        grid-template-columns: 1fr;
-        gap: 0;
+@media (max-width: 1200px) {
+    .faq-vertical-marquee {
+        width: 60px;
     }
     
+    .faq-vertical-marquee__track {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 1024px) {
     .faq-vertical-marquee {
-        display: none; /* Скрываем вертикальные строки на планшетах и мобильных */
+        display: none; /* Скрываем на планшетах и мобильных */
     }
 }
 
