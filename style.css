@@ -820,23 +820,24 @@ body {
     font-size: 0.75rem;
 }
 
-/* --- 11. FAQ (С ВЕРТИКАЛЬНЫМИ БЕГУЩИМИ СТРОКАМИ) --- */
+/* --- 11. FAQ (С ВЕРТИКАЛЬНЫМИ БЕГУЩИМИ СТРОКАМИ ПО КРАЯМ ЭКРАНА) --- */
 .faq {
     padding-bottom: 120px;
     position: relative;
-    overflow: hidden;
+    overflow: visible; /* Позволяем строкам выходить за границы */
 }
 
-/* Вертикальные бегущие строки - абсолютное позиционирование */
+/* Вертикальные бегущие строки - fixed positioning по краям экрана */
 .faq-vertical-marquee {
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
-    width: 100px;
+    width: 140px; /* Увеличено с 100px */
     overflow: hidden;
     display: flex;
     align-items: center;
-    z-index: 1;
+    z-index: 100;
+    pointer-events: none; /* Чтобы не мешали кликам */
 }
 
 .faq-vertical-marquee--left {
@@ -850,11 +851,11 @@ body {
 .faq-vertical-marquee__track {
     display: flex;
     flex-direction: column;
-    animation: marqueeVertical 25s linear infinite;
+    animation: marqueeVertical 20s linear infinite; /* Ускорено с 25s */
     font-family: var(--font-heading);
-    font-size: 1.4rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
+    font-size: 2rem; /* Увеличено с 1.4rem */
+    font-weight: 700; /* Увеличено с 600 */
+    letter-spacing: 0.2em; /* Увеличено с 0.15em */
     writing-mode: vertical-rl;
     text-orientation: mixed;
     white-space: nowrap;
@@ -863,13 +864,13 @@ body {
 /* Левая строка — приглушённая, серая */
 .faq-vertical-marquee--left .faq-vertical-marquee__track {
     color: var(--border-color);
-    opacity: 0.6;
+    opacity: 0.5;
 }
 
 /* Правая строка — синяя, в другую сторону */
 .faq-vertical-marquee--right .faq-vertical-marquee__track {
     color: var(--accent-color);
-    opacity: 0.3;
+    opacity: 0.4; /* Увеличено с 0.3 */
     animation-direction: reverse;
 }
 
@@ -1027,13 +1028,13 @@ body {
 }
 
 /* --- АДАПТИВНОСТЬ FAQ --- */
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
     .faq-vertical-marquee {
-        width: 60px;
+        width: 100px;
     }
     
     .faq-vertical-marquee__track {
-        font-size: 1rem;
+        font-size: 1.6rem;
     }
 }
 
