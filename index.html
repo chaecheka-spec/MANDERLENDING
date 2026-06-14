@@ -11,6 +11,13 @@
 </head>
 <body>
 
+    <!-- Progress bar скролла -->
+    <div class="scroll-progress"></div>
+
+    <!-- Кастомный курсор -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
     <!-- HEADER -->
     <header class="header">
         <div class="container">
@@ -27,37 +34,60 @@
                     <a href="#contact" class="nav__link"><span class="mono-index">05</span> Контакты</a>
                 </nav>
                 <div class="header__cta">
-                    <a href="#contact" class="btn btn--small btn--outline">Обсудить проект</a>
+                    <a href="#contact" class="btn btn--small btn--outline magnetic">Обсудить проект</a>
                 </div>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- ЭКРАН 1: HERO -->
+        <!-- ЭКРАН 1: HERO (асимметричный) -->
         <section class="hero section-grid">
             <div class="container">
-                <div class="hero__meta mono-text">
-                    <span>STATUS: ДОСТУПЕН ДЛЯ НОВЫХ ПРОЕКТОВ</span>
-                    <span>LOC: СИМФЕРОПОЛЬ / REMOTE</span>
-                    <span>BUILD: 2026</span>
-                </div>
-                <h1 class="hero__title">
-                    Создаю дизайн,<br>
-                    который <span class="text-accent">помогает бизнесу</span><br>
-                    расти.
-                </h1>
-                <p class="hero__subtitle">
-                    Превращаю сложные задачи в понятные и эстетичные интерфейсы. Работаю прозрачно, в срок и с фокусом на ваш результат.
-                </p>
-                <div class="hero__actions">
-                    <a href="#contact" class="btn btn--primary">Мой проект</a>
-                    <a href="#cases" class="btn btn--outline">Смотреть портфолио ↓</a>
+                <div class="hero__inner">
+                    <!-- Левая часть: контент -->
+                    <div class="hero__content">
+                        <div class="hero__meta mono-text">
+                            <span>STATUS: ДОСТУПЕН ДЛЯ НОВЫХ ПРОЕКТОВ</span>
+                            <span>LOC: СИМФЕРОПОЛЬ / REMOTE</span>
+                            <span>BUILD: 2026</span>
+                        </div>
+                        <h1 class="hero__title">
+                            Создаю дизайн,<br>
+                            который <span class="text-accent">помогает бизнесу</span><br>
+                            расти.
+                        </h1>
+                        <p class="hero__subtitle">
+                            Превращаю сложные задачи в понятные и эстетичные интерфейсы. Работаю прозрачно, в срок и с фокусом на ваш результат.
+                        </p>
+                        <div class="hero__actions">
+                            <a href="#contact" class="btn btn--primary magnetic">Мой проект</a>
+                            <a href="#cases" class="btn btn--outline">Смотреть портфолио ↓</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Правая часть: декоративная композиция -->
+                    <div class="hero__visual">
+                        <div class="hero__deco-year">26</div>
+                        <div class="hero__deco-circle"></div>
+                        <div class="hero__deco-circle hero__deco-circle--small"></div>
+                        <div class="hero__deco-tag mono-text">DESIGNER<br>BASED IN<br>SIMFEROPOL</div>
+                        <div class="hero__deco-line"></div>
+                        <div class="hero__deco-coord mono-text">44°57'N / 34°06'E</div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- ЭКРАН 2: ПОДХОД (карточки) -->
+        <!-- БЕГУЩАЯ СТРОКА -->
+        <section class="marquee section-grid">
+            <div class="marquee__track">
+                <span>WEB DESIGN · UI/UX · BRANDING · INTERFACES · MOTION · WEB DESIGN · UI/UX · BRANDING · INTERFACES · MOTION ·&nbsp;</span>
+                <span>WEB DESIGN · UI/UX · BRANDING · INTERFACES · MOTION · WEB DESIGN · UI/UX · BRANDING · INTERFACES · MOTION ·&nbsp;</span>
+            </div>
+        </section>
+
+        <!-- ЭКРАН 2: ПОДХОД -->
         <section id="approach" class="approach section-grid">
             <div class="container">
                 <div class="section-header">
@@ -82,12 +112,12 @@
                     </div>
                 </div>
                 <div class="section-cta">
-                    <a href="https://t.me/CheZaDesignn" target="_blank" class="btn btn--outline">Такой подход вам близок? Давайте познакомимся</a>
+                    <a href="https://t.me/CheZaDesignn" target="_blank" class="btn btn--outline magnetic">Такой подход вам близок? Давайте познакомимся</a>
                 </div>
             </div>
         </section>
 
-        <!-- ЭКРАН 3: УСЛУГИ (горизонтальные строки — другой стиль!) -->
+        <!-- ЭКРАН 3: УСЛУГИ -->
         <section id="services" class="services section-grid">
             <div class="container">
                 <div class="section-header">
@@ -121,12 +151,12 @@
                     </div>
                 </div>
                 <div class="section-cta">
-                    <a href="#contact" class="btn btn--outline">Не знаете, что именно вам нужно? Напишите мне, я помогу сформулировать задачу</a>
+                    <a href="#contact" class="btn btn--outline magnetic">Не знаете, что именно вам нужно? Напишите мне, я помогу сформулировать задачу</a>
                 </div>
             </div>
         </section>
 
-        <!-- ЭКРАН 4: КЕЙСЫ (без фильтров, с двумя кнопками) -->
+        <!-- ЭКРАН 4: КЕЙСЫ -->
         <section id="cases" class="cases section-grid">
             <div class="container">
                 <div class="section-header">
@@ -171,13 +201,13 @@
                     </article>
                 </div>
                 <div class="section-cta section-cta--double">
-                    <a href="#contact" class="btn btn--primary">Хотите такой же результат? Обсудить задачу</a>
+                    <a href="#contact" class="btn btn--primary magnetic">Хотите такой же результат? Обсудить задачу</a>
                     <a href="#" class="btn btn--outline">Смотреть ещё работы</a>
                 </div>
             </div>
         </section>
 
-        <!-- ЭКРАН 5: ПРОЦЕСС (креативный таймлайн с анимацией) -->
+        <!-- ЭКРАН 5: ПРОЦЕСС -->
         <section id="process" class="process section-grid">
             <div class="container">
                 <div class="section-header">
@@ -230,18 +260,35 @@
                     </div>
                 </div>
                 <div class="section-cta">
-                    <a href="#contact" class="btn btn--primary">Готовы начать с Шага 1? Заполните короткую форму</a>
+                    <a href="#contact" class="btn btn--primary magnetic">Готовы начать с Шага 1? Заполните короткую форму</a>
                 </div>
             </div>
         </section>
 
-        <!-- ЭКРАН 6: ОТЗЫВЫ -->
+        <!-- ЭКРАН 6: ОТЗЫВЫ И СТАТИСТИКА -->
         <section id="clients" class="clients section-grid">
             <div class="container">
                 <div class="section-header">
                     <span class="mono-tag">05 / СОЦИАЛЬНОЕ ДОКАЗАТЕЛЬСТВО</span>
-                    <h2>Отзывы клиентов</h2>
+                    <h2>Цифры и отзывы</h2>
                 </div>
+                
+                <!-- Счётчики -->
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="30">0</span><span class="stat-suffix">+</span>
+                        <span class="stat-label">проектов в работе</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="5">0</span><span class="stat-suffix">+</span>
+                        <span class="stat-label">лет опыта в дизайне</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="100">0</span><span class="stat-suffix">%</span>
+                        <span class="stat-label">работаю по договору</span>
+                    </div>
+                </div>
+
                 <div class="clients-logos">
                     <div class="logo-placeholder mono-text">LOGO 01</div>
                     <div class="logo-placeholder mono-text">LOGO 02</div>
@@ -273,68 +320,83 @@
             </div>
         </section>
 
-        <!-- ЭКРАН 7: FAQ (с красивыми блоками) -->
+        <!-- ЭКРАН 7: FAQ (двухколоночный) -->
         <section id="faq" class="faq section-grid">
             <div class="container">
                 <div class="section-header">
                     <span class="mono-tag">06 / ОТВЕТЫ НА ВОПРОСЫ</span>
                     <h2>Часто задаваемые вопросы</h2>
                 </div>
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span class="faq-q-text">Как формируется цена?</span>
-                            <span class="faq-icon">
-                                <span class="icon-line"></span>
-                                <span class="icon-line"></span>
-                            </span>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer__inner">
-                                <p>Цена зависит от объема работ и сложности проекта. После brief-созвона я предоставляю детальную смету с фиксированной стоимостью. Никаких скрытых платежей.</p>
+                
+                <div class="faq-grid">
+                    <!-- Левая часть: вопросы -->
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span class="faq-q-text">Как формируется цена?</span>
+                                <span class="faq-icon">
+                                    <span class="icon-line"></span>
+                                    <span class="icon-line"></span>
+                                </span>
+                            </button>
+                            <div class="faq-answer">
+                                <div class="faq-answer__inner">
+                                    <p>Цена зависит от объема работ и сложности проекта. После brief-созвона я предоставляю детальную смету с фиксированной стоимостью. Никаких скрытых платежей.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span class="faq-q-text">Сколько правок включено?</span>
+                                <span class="faq-icon">
+                                    <span class="icon-line"></span>
+                                    <span class="icon-line"></span>
+                                </span>
+                            </button>
+                            <div class="faq-answer">
+                                <div class="faq-answer__inner">
+                                    <p>В каждый этап включено 2-3 раунда правок. Этого достаточно, чтобы довести результат до идеала. Дополнительные правки обсуждаются отдельно.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span class="faq-q-text">Работаете ли по договору?</span>
+                                <span class="faq-icon">
+                                    <span class="icon-line"></span>
+                                    <span class="icon-line"></span>
+                                </span>
+                            </button>
+                            <div class="faq-answer">
+                                <div class="faq-answer__inner">
+                                    <p>Да, обязательно. Мы фиксируем цену, сроки и объем работ в договоре до начала проекта. Это защищает обе стороны и дает уверенность в результате.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span class="faq-q-text">Что если я не успею оплатить в срок?</span>
+                                <span class="faq-icon">
+                                    <span class="icon-line"></span>
+                                    <span class="icon-line"></span>
+                                </span>
+                            </button>
+                            <div class="faq-answer">
+                                <div class="faq-answer__inner">
+                                    <p>Мы всегда можем обсудить гибкий график оплаты. Обычно работа начинается после предоплаты 50%, остаток — после сдачи проекта.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span class="faq-q-text">Сколько правок включено?</span>
-                            <span class="faq-icon">
-                                <span class="icon-line"></span>
-                                <span class="icon-line"></span>
-                            </span>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer__inner">
-                                <p>В каждый этап включено 2-3 раунда правок. Этого достаточно, чтобы довести результат до идеала. Дополнительные правки обсуждаются отдельно.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span class="faq-q-text">Работаете ли по договору?</span>
-                            <span class="faq-icon">
-                                <span class="icon-line"></span>
-                                <span class="icon-line"></span>
-                            </span>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer__inner">
-                                <p>Да, обязательно. Мы фиксируем цену, сроки и объем работ в договоре до начала проекта. Это защищает обе стороны и дает уверенность в результате.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span class="faq-q-text">Что если я не успею оплатить в срок?</span>
-                            <span class="faq-icon">
-                                <span class="icon-line"></span>
-                                <span class="icon-line"></span>
-                            </span>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer__inner">
-                                <p>Мы всегда можем обсудить гибкий график оплаты. Обычно работа начинается после предоплаты 50%, остаток — после сдачи проекта.</p>
-                            </div>
+                    
+                    <!-- Правая часть: декор + CTA -->
+                    <div class="faq-side">
+                        <div class="faq-big-text">FAQ</div>
+                        <div class="faq-side-meta mono-text">EST. 2026 / SIMFEROPOL / AVAILABLE WORLDWIDE</div>
+                        <div class="faq-cta-card">
+                            <h3>Не нашли ответ?</h3>
+                            <p>Напишите мне напрямую в Telegram — отвечу в течение часа и помогу разобраться в вашем вопросе.</p>
+                            <a href="https://t.me/CheZaDesignn" target="_blank" class="btn btn--primary magnetic">Написать в Telegram ↗</a>
                         </div>
                     </div>
                 </div>
@@ -371,7 +433,7 @@
                             <label for="message" class="mono-text">ОПИСАНИЕ ЗАДАЧИ</label>
                             <textarea id="message" name="message" rows="4" required placeholder="Мне нужен редизайн сайта..."></textarea>
                         </div>
-                        <button type="submit" class="btn btn--primary btn--full" id="submitBtn">Отправить заявку</button>
+                        <button type="submit" class="btn btn--primary btn--full magnetic" id="submitBtn">Отправить заявку</button>
                         <p id="formStatus" class="form-status mono-text"></p>
                     </form>
                 </div>
@@ -389,7 +451,7 @@
                     <span class="mono-text">Дизайн с заботой о деталях</span>
                 </div>
                 <div class="footer__right">
-                    <span class="mono-text">v.2.2</span>
+                    <span class="mono-text">v.2.3</span>
                 </div>
             </div>
         </div>
