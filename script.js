@@ -87,106 +87,59 @@ document.querySelectorAll('.faq-question').forEach(button => {
     });
 });
 
-// 6. АНИМАЦИЯ ПРОЦЕССА (НЕПРЕРЫВНАЯ ЗМЕЙКА)
+// 6. АНИМАЦИЯ ПРОЦЕССА (STICKY-ЭФФЕКТ)
 const processSection = document.getElementById('process');
-const snakeSvg = document.getElementById('processSnake');
-const snakeBg = document.getElementById('snakeBg');
-const snakeFill = document.getElementById('snakeFill');
-const processSteps = document.querySelectorAll('.process-step');
+const processCards = document.querySelectorAll('.process-card');
+const progressBar = document.querySelector('.process-progress__bar');
+const currentStepText = document.querySelector('.current-step');
 
-// Генерация пути змейки
-function generateSnakePath() {
-    const sectionRect = processSection.getBoundingClientRect();
-    const header = processSection.querySelector('.section-header');
-    const cta = processSection.querySelector('.section-cta');
-    const headerRect = header.getBoundingClientRect();
-    const ctaRect = cta.getBoundingClientRect();
-    
-    // Координаты относительно секции
-    const startX = headerRect.left - sectionRect.left + headerRect.width / 2;
-    const startY = headerRect.bottom - sectionRect.top;
-    const endX = ctaRect.left - sectionRect.left + ctaRect.width / 2;
-    const endY = ctaRect.top - sectionRect.top;
-    
-    const steps = Array.from(processSteps);
-    const stepPositions = steps.map(step => {
-        const rect = step.getBoundingClientRect();
-        return {
-            x: rect.left - sectionRect.left + (steps.indexOf(step) % 2 === 0 ? rect.width : 0),
-            y: rect.top - sectionRect.top + rect.height / 2
-        };
-    });
-    
-    // Строим путь змейки
-    let path = `M ${startX} ${startY}`;
-    
-    // Идём к первой карточке
-    if (stepPositions[0]) {
-        path += ` L ${stepPositions[0].x} ${stepPositions[0].y}`;
-    }
-    
-    // Змейка между карточками
-    for (let i = 0; i < stepPositions.length - 1; i++) {
-        const current = stepPositions[i];
-        const next = stepPositions[i + 1];
-        const midY = (current.y + next.y) / 2;
-        const controlX = i % 2 === 0 ? sectionRect.width * 0.8 : sectionRect.width * 0.2;
-        
-        path += ` C ${controlX} ${midY - 30}, ${controlX} ${midY + 30}, ${next.x} ${next.y}`;
-    }
-    
-    // Идём к кнопке
-    path += ` L ${endX} ${endY}`;
-    
-    snakeBg.setAttribute('d', path);
-    snakeFill.setAttribute('d', path);
-}
-
-// Появление карточек при скролле
-const processObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, {
-    threshold: 0.3,
-    rootMargin: '0px 0px -100px 0px'
-});
-
-processSteps.forEach(step => processObserver.observe(step));
-
-// Заполнение змейки при скролле
-function updateSnakeFill() {
+// Обновление прогресс-бара и номера шага
+function updateProcessProgress() {
     const sectionRect = processSection.getBoundingClientRect();
     const windowHeight = window.innerHeight;
     
-    // Вычисляем прогресс скролла блока
+    // Вычисляем прогресс скролла внутри секции
     const sectionTop = sectionRect.top;
     const sectionHeight = sectionRect.height;
     
-    // 0 = блок только появился снизу, 1 = блок полностью прошёл
-    const progress = (windowHeight - sectionTop) / (windowHeight + sectionHeight);
-    const clampedProgress = Math.max(0, Math.min(1, progress));
+    // Прогресс от 0 до 1
+    const progress = Math.max(0, Math.min(1, (windowHeight - sectionTop) / sectionHeight));
     
-    // Длина пути (примерно)
-    const pathLength = 3000;
-    const offset = pathLength * (1 - clampedProgress);
+    // Обновляем ширину прогресс-бара
+    if (progressBar) {
+        progressBar.style.setProperty('--progress', `${progress * 100}%`);
+        const barAfter = progressBar.querySelector('::after') || progressBar;
+        progressBar.style.cssText = `
+            position: relative;
+            overflow: hidden;
+        `;
+        
+        // Создаём или обновляем псевдоэлемент через CSS переменную
+        const progressPercent = progress * 100;
+        progressBar.innerHTML = `<div style="position: absolute; left: 0; top: 0; height: 100%; width: ${progressPercent}%; background: linear-gradient(90deg, var(--accent-color), var(--accent-hover)); box-shadow: 0 0 10px rgba(37, 99, 235, 0.6); transition: width 0.3s ease;"></div>`;
+    }
     
-    snakeFill.style.strokeDashoffset = offset;
+    // Определяем текущий шаг
+    let currentStep = 1;
+    processCards.forEach((card, index) => {
+        const cardRect = card.getBoundingClientRect();
+        if (cardRect.top < windowHeight / 2) {
+            currentStep = index + 1;
+        }
+    });
+    
+    // Обновляем текст
+    if (currentStepText) {
+        currentStepText.textContent = `0${currentStep}`;
+    }
 }
 
-// Инициализация
-window.addEventListener('load', () => {
-    generateSnakePath();
-    updateSnakeFill();
-});
+// Запускаем при скролле
+window.addEventListener('scroll', updateProcessProgress, { passive: true });
+window.addEventListener('resize', updateProcessProgress);
 
-window.addEventListener('resize', () => {
-    generateSnakePath();
-});
-
-window.addEventListener('scroll', updateSnakeFill, { passive: true });
+// Первичный вызов
+setTimeout(updateProcessProgress, 100);
 
 processSteps.forEach(step => processObserver.observe(step));
 
