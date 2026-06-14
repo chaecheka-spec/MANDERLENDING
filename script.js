@@ -91,7 +91,6 @@ document.querySelectorAll('.faq-question').forEach(button => {
 const processSection = document.getElementById('process');
 const stairSteps = document.querySelectorAll('.stair-step');
 const stairConnectors = document.querySelectorAll('.stair-connector');
-const progressBarFill = document.querySelector('.process-progress-bar__fill::after');
 const progressPercent = document.querySelector('.progress-percent');
 
 // Появление карточек при скролле
@@ -110,6 +109,8 @@ stairSteps.forEach(step => processObserver.observe(step));
 
 // Активация шагов и заполнение коннекторов при скролле
 function updateStaircaseProgress() {
+    if (!processSection) return;
+    
     const windowHeight = window.innerHeight;
     const sectionRect = processSection.getBoundingClientRect();
     
@@ -119,29 +120,25 @@ function updateStaircaseProgress() {
     ));
     
     // Обновляем прогресс-бар
+    const progressBarFill = document.querySelector('.process-progress-bar__fill');
     if (progressBarFill) {
-        const fillElement = document.querySelector('.process-progress-bar__fill');
-        if (fillElement) {
-            fillElement.style.setProperty('--progress', `${sectionProgress}%`);
-            // Создаём индикатор через JS
-            let indicator = fillElement.querySelector('.progress-indicator');
-            if (!indicator) {
-                indicator = document.createElement('div');
-                indicator.className = 'progress-indicator';
-                indicator.style.cssText = `
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    height: 100%;
-                    background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
-                    border-radius: 2px;
-                    transition: width 0.3s ease;
-                    box-shadow: 0 0 10px rgba(37, 99, 235, 0.6);
-                `;
-                fillElement.appendChild(indicator);
-            }
-            indicator.style.width = `${sectionProgress}%`;
+        let indicator = progressBarFill.querySelector('.progress-indicator');
+        if (!indicator) {
+            indicator = document.createElement('div');
+            indicator.className = 'progress-indicator';
+            indicator.style.cssText = `
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
+                border-radius: 2px;
+                transition: width 0.3s ease;
+                box-shadow: 0 0 10px rgba(37, 99, 235, 0.6);
+            `;
+            progressBarFill.appendChild(indicator);
         }
+        indicator.style.width = `${sectionProgress}%`;
     }
     
     if (progressPercent) {
@@ -154,7 +151,6 @@ function updateStaircaseProgress() {
         const stepRect = step.getBoundingClientRect();
         const stepMiddle = stepRect.top + stepRect.height / 2;
         
-        // Если середина карточки выше середины экрана - активируем
         if (stepMiddle < windowHeight * 0.7) {
             step.classList.add('active');
             activeStepsCount = index + 1;
@@ -173,12 +169,9 @@ function updateStaircaseProgress() {
     });
 }
 
-// Запускаем при скролле
 window.addEventListener('scroll', updateStaircaseProgress, { passive: true });
 window.addEventListener('resize', updateStaircaseProgress);
-
-// Первичный вызов
-setTimeout(updateStaircaseProgress, 100);;
+setTimeout(updateStaircaseProgress, 100);
 
 // 7. СЧЁТЧИКИ С АНИМАЦИЕЙ
 const statNumbers = document.querySelectorAll('.stat-number');

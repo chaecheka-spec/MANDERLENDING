@@ -262,16 +262,16 @@ body {
     align-items: center;
 }
 
-.hero .container {
+.hero__container {
     width: 100%;
     max-width: 100%;
-    padding: 0 24px; /* Выравниваем с меню */
+    padding: 0 24px;
 }
 
 .hero__content {
     max-width: 900px;
-    margin: 0; /* Убираем центрирование */
-    text-align: left; /* Явное выравнивание по левому краю */
+    margin: 0;
+    text-align: left;
 }
 
 .hero__meta {
@@ -538,7 +538,6 @@ body {
     overflow: hidden;
 }
 
-/* Прогресс-бар */
 .process-progress-bar {
     position: sticky;
     top: 100px;
@@ -547,11 +546,10 @@ body {
     align-items: center;
     gap: 16px;
     margin-bottom: 60px;
-    padding: 0 24px;
+    padding: 16px 24px;
     background: rgba(5, 5, 5, 0.9);
     backdrop-filter: blur(10px);
     border-radius: var(--radius);
-    padding: 16px 24px;
     border: 1px solid var(--border-color);
 }
 
@@ -562,19 +560,6 @@ body {
     border-radius: 2px;
     overflow: hidden;
     position: relative;
-}
-
-.process-progress-bar__fill::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
-    border-radius: 2px;
-    transition: width 0.3s ease;
-    box-shadow: 0 0 10px rgba(37, 99, 235, 0.6);
 }
 
 .process-progress-bar__text {
@@ -591,7 +576,6 @@ body {
     font-size: 1rem;
 }
 
-/* Лестница */
 .process-staircase {
     position: relative;
     padding: 0 24px;
@@ -600,7 +584,6 @@ body {
     gap: 0;
 }
 
-/* Карточки-ступени */
 .stair-step {
     opacity: 0;
     transform: translateY(30px);
@@ -613,38 +596,15 @@ body {
     transform: translateY(0);
 }
 
-/* Диагональное смещение */
-.stair-step--1 {
-    transform: translateX(0);
-}
+.stair-step--1 { transform: translateX(0); }
+.stair-step--2 { transform: translateX(80px); }
+.stair-step--3 { transform: translateX(160px); }
+.stair-step--4 { transform: translateX(240px); }
 
-.stair-step--2 {
-    transform: translateX(80px);
-}
-
-.stair-step--3 {
-    transform: translateX(160px);
-}
-
-.stair-step--4 {
-    transform: translateX(240px);
-}
-
-.stair-step.visible.stair-step--1 {
-    transform: translateX(0);
-}
-
-.stair-step.visible.stair-step--2 {
-    transform: translateX(80px);
-}
-
-.stair-step.visible.stair-step--3 {
-    transform: translateX(160px);
-}
-
-.stair-step.visible.stair-step--4 {
-    transform: translateX(240px);
-}
+.stair-step.visible.stair-step--1 { transform: translateX(0); }
+.stair-step.visible.stair-step--2 { transform: translateX(80px); }
+.stair-step.visible.stair-step--3 { transform: translateX(160px); }
+.stair-step.visible.stair-step--4 { transform: translateX(240px); }
 
 .stair-step__content {
     background-color: var(--bg-card);
@@ -659,7 +619,6 @@ body {
     max-width: 500px;
 }
 
-/* Активная карточка (пройденный шаг) */
 .stair-step.active .stair-step__content {
     border-color: var(--accent-color);
     background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), var(--bg-card));
@@ -711,7 +670,6 @@ body {
     opacity: 1;
 }
 
-/* Коннекторы между ступенями */
 .stair-connector {
     height: 80px;
     position: relative;
@@ -742,59 +700,6 @@ body {
 
 .stair-connector.filled .connector-fill {
     stroke-dashoffset: 0;
-}
-
-/* Адаптивность */
-@media (max-width: 1024px) {
-    .stair-step--2,
-    .stair-step--3,
-    .stair-step--4 {
-        transform: translateX(40px);
-    }
-    
-    .stair-step.visible.stair-step--2 {
-        transform: translateX(40px);
-    }
-    
-    .stair-step.visible.stair-step--3 {
-        transform: translateX(80px);
-    }
-    
-    .stair-step.visible.stair-step--4 {
-        transform: translateX(120px);
-    }
-}
-
-@media (max-width: 768px) {
-    .stair-step--1,
-    .stair-step--2,
-    .stair-step--3,
-    .stair-step--4 {
-        transform: translateX(0) !important;
-    }
-    
-    .stair-step__content {
-        grid-template-columns: 1fr;
-        gap: 16px;
-        padding: 24px;
-        max-width: 100%;
-    }
-    
-    .stair-step__number {
-        font-size: 2.5rem;
-    }
-    
-    .stair-step__text h3 {
-        font-size: 1.3rem;
-    }
-    
-    .stair-connector {
-        height: 60px;
-    }
-    
-    .process-progress-bar {
-        top: 80px;
-    }
 }
 
 /* --- 10. КЛИЕНТЫ, СТАТИСТИКА И ОТЗЫВЫ --- */
@@ -915,7 +820,7 @@ body {
     font-size: 0.75rem;
 }
 
-/* --- 11. FAQ (ОДНОКОЛОНОЧНЫЙ С ВОЗДУХОМ) --- */
+/* --- 11. FAQ --- */
 .faq {
     padding-bottom: 120px;
 }
@@ -1205,6 +1110,14 @@ body {
     .cursor, .cursor-follower {
         display: none;
     }
+    .stair-step--2,
+    .stair-step--3,
+    .stair-step--4 {
+        transform: translateX(40px);
+    }
+    .stair-step.visible.stair-step--2 { transform: translateX(40px); }
+    .stair-step.visible.stair-step--3 { transform: translateX(80px); }
+    .stair-step.visible.stair-step--4 { transform: translateX(120px); }
 }
 
 @media (max-width: 768px) {
@@ -1254,5 +1167,35 @@ body {
     }
     .faq-cta-card {
         padding: 32px 24px;
+    }
+    .stair-step--1,
+    .stair-step--2,
+    .stair-step--3,
+    .stair-step--4 {
+        transform: translateX(0) !important;
+    }
+    .stair-step.visible.stair-step--1,
+    .stair-step.visible.stair-step--2,
+    .stair-step.visible.stair-step--3,
+    .stair-step.visible.stair-step--4 {
+        transform: translateX(0) !important;
+    }
+    .stair-step__content {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 24px;
+        max-width: 100%;
+    }
+    .stair-step__number {
+        font-size: 2.5rem;
+    }
+    .stair-step__text h3 {
+        font-size: 1.3rem;
+    }
+    .stair-connector {
+        height: 60px;
+    }
+    .process-progress-bar {
+        top: 80px;
     }
 }
