@@ -89,34 +89,39 @@ document.querySelectorAll('.faq-question').forEach(button => {
 
 // 6. АНИМАЦИЯ ПРОЦЕССА (STICKY-ЭФФЕКТ)
 const processSection = document.getElementById('process');
-const processCards = document.querySelectorAll('.process-card');
 const progressBar = document.querySelector('.process-progress__bar');
 const currentStepText = document.querySelector('.current-step');
+const processCards = document.querySelectorAll('.process-card');
 
-// Обновление прогресс-бара и номера шага
 function updateProcessProgress() {
+    if (!processSection || !progressBar) return;
+    
     const sectionRect = processSection.getBoundingClientRect();
     const windowHeight = window.innerHeight;
-    
-    // Вычисляем прогресс скролла внутри секции
-    const sectionTop = sectionRect.top;
     const sectionHeight = sectionRect.height;
     
     // Прогресс от 0 до 1
-    const progress = Math.max(0, Math.min(1, (windowHeight - sectionTop) / sectionHeight));
+    const progress = Math.max(0, Math.min(1, (windowHeight - sectionRect.top) / sectionHeight));
     
-    // Обновляем ширину прогресс-бара
+    // Обновляем прогресс-бар
     if (progressBar) {
-        progressBar.style.setProperty('--progress', `${progress * 100}%`);
-        const barAfter = progressBar.querySelector('::after') || progressBar;
-        progressBar.style.cssText = `
-            position: relative;
-            overflow: hidden;
-        `;
+        // Удаляем старый индикатор
+        const oldIndicator = progressBar.querySelector('div');
+        if (oldIndicator) oldIndicator.remove();
         
-        // Создаём или обновляем псевдоэлемент через CSS переменную
-        const progressPercent = progress * 100;
-        progressBar.innerHTML = `<div style="position: absolute; left: 0; top: 0; height: 100%; width: ${progressPercent}%; background: linear-gradient(90deg, var(--accent-color), var(--accent-hover)); box-shadow: 0 0 10px rgba(37, 99, 235, 0.6); transition: width 0.3s ease;"></div>`;
+        // Создаём новый
+        const indicator = document.createElement('div');
+        indicator.style.cssText = `
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: ${progress * 100}%;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.6);
+            transition: width 0.2s ease;
+        `;
+        progressBar.appendChild(indicator);
     }
     
     // Определяем текущий шаг
@@ -128,7 +133,6 @@ function updateProcessProgress() {
         }
     });
     
-    // Обновляем текст
     if (currentStepText) {
         currentStepText.textContent = `0${currentStep}`;
     }
@@ -140,8 +144,6 @@ window.addEventListener('resize', updateProcessProgress);
 
 // Первичный вызов
 setTimeout(updateProcessProgress, 100);
-
-processSteps.forEach(step => processObserver.observe(step));
 
 // 7. СЧЁТЧИКИ С АНИМАЦИЕЙ
 const statNumbers = document.querySelectorAll('.stat-number');
