@@ -11,10 +11,8 @@
 </head>
 <body>
 
-    <!-- Прогресс-бар скролла -->
-    <div class="scroll-progress">
-        <div class="scroll-progress__bar"></div>
-    </div>
+    <!-- Progress bar скролла -->
+    <div class="scroll-progress"></div>
 
     <!-- Кастомный курсор -->
     <div class="cursor"></div>
@@ -43,7 +41,7 @@
     </header>
 
     <main>
-        <!-- ЭКРАН 1: HERO (текст слева) -->
+        <!-- ЭКРАН 1: HERO (контент на всю ширину) -->
         <section class="hero section-grid">
             <div class="container">
                 <div class="hero__content">
@@ -53,52 +51,30 @@
                         <span>BUILD: 2026</span>
                     </div>
                     <h1 class="hero__title">
-                        <span class="title-line">Создаю дизайн,</span>
-                        <span class="title-line">который <span class="text-accent">помогает бизнесу</span></span>
-                        <span class="title-line">расти.</span>
+                        Создаю дизайн,<br>
+                        который <span class="text-accent">помогает бизнесу</span><br>
+                        расти.
                     </h1>
                     <p class="hero__subtitle">
                         Превращаю сложные задачи в понятные и эстетичные интерфейсы. Работаю прозрачно, в срок и с фокусом на ваш результат.
                     </p>
                     <div class="hero__actions">
                         <a href="#contact" class="btn btn--primary magnetic">Мой проект</a>
-                        <a href="#cases" class="btn btn--outline magnetic">Смотреть портфолио ↓</a>
+                        <a href="#cases" class="btn btn--outline">Смотреть портфолио ↓</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- БЕГУЩАЯ СТРОКА -->
-        <div class="marquee">
-            <div class="marquee__inner">
-                <span class="marquee__item">UI/UX DESIGN</span>
-                <span class="marquee__separator">●</span>
-                <span class="marquee__item">WEB DESIGN</span>
-                <span class="marquee__separator">●</span>
-                <span class="marquee__item">IDENTITY</span>
-                <span class="marquee__separator">●</span>
-                <span class="marquee__item">PROTOTYPING</span>
-                <span class="marquee__separator">●</span>
-                <span class="marquee__item">FIGMA</span>
-                <span class="marquee__separator">●</span>
-                <span class="marquee__item">RESPONSIVE</span>
-                <span class="marquee__separator">●</span>
-                <span class="marquee__item">UI/UX DESIGN</span>
-                <span class="marquee__separator">●</span>
-                <span class="marquee__item">WEB DESIGN</span>
-                <span class="marquee__separator">●</span>
-                <span class="marquee__item">IDENTITY</span>
-                <span class="marquee__separator">●</span>
-                <span class="marquee__item">PROTOTYPING</span>
-                <span class="marquee__separator">●</span>
-                <span class="marquee__item">FIGMA</span>
-                <span class="marquee__separator">●</span>
-                <span class="marquee__item">RESPONSIVE</span>
-                <span class="marquee__separator">●</span>
+        <section class="marquee section-grid">
+            <div class="marquee__track">
+                <span>WEB DESIGN · UI/UX · BRANDING · INTERFACES · MOTION · WEB DESIGN · UI/UX · BRANDING · INTERFACES · MOTION ·&nbsp;</span>
+                <span>WEB DESIGN · UI/UX · BRANDING · INTERFACES · MOTION · WEB DESIGN · UI/UX · BRANDING · INTERFACES · MOTION ·&nbsp;</span>
             </div>
-        </div>
+        </section>
 
-        <!-- ЭКРАН 2: ПОДХОД -->
+        <!-- ЭКРАН 2: ПОДХОД (с иконками) -->
         <section id="approach" class="approach section-grid">
             <div class="container">
                 <div class="section-header">
@@ -107,17 +83,33 @@
                 </div>
                 <div class="grid-3">
                     <div class="grid-card">
-                        <span class="card-number mono-text">01</span>
+                        <div class="card-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11 19.5H6C4.11438 19.5 3.17157 19.5 2.58579 18.9142C2 18.3284 2 17.3856 2 15.5V8.5C2 6.61438 2 5.67157 2.58579 5.08579C3.17157 4.5 4.11438 4.5 6 4.5H18C19.8856 4.5 20.8284 4.5 21.4142 5.08579C22 5.67157 22 6.61438 22 8.5V10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M11 13.5H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M13 17.5H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M17 20.5L19.5 22L22 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
                         <h3>Погружение в задачу</h3>
                         <p>Я не просто «рисую макеты». Сначала я изучаю ваш бизнес, аудиторию и цели, чтобы дизайн решал конкретные проблемы.</p>
                     </div>
                     <div class="grid-card">
-                        <span class="card-number mono-text">02</span>
+                        <div class="card-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 12.5C2 9.46497 2 7.9535 2.93301 7.01924C3.86602 6.08497 5.37398 6.08497 8.4 6.08497H15.6C18.626 6.08497 20.139 6.08497 21.072 7.01924C22.005 7.9535 22.005 9.46497 22.005 12.5C22.005 15.535 22.005 17.0465 21.072 17.9808C20.139 18.915 18.626 18.915 15.6 18.915H8.4C5.37398 18.915 3.86102 18.915 2.92801 17.9808C1.995 17.0465 2 15.535 2 12.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M17 9L13.5 12.5L17 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
                         <h3>Прозрачность процесса</h3>
                         <p>Никакой магии и сюрпризов. Мы согласовываем прототипы и концепции на ранних этапах, чтобы финальный результат вас точно порадовал.</p>
                     </div>
                     <div class="grid-card">
-                        <span class="card-number mono-text">03</span>
+                        <div class="card-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L14.5 8.5L21 9.5L16.5 14L17.5 21L12 18L6.5 21L7.5 14L3 9.5L9.5 8.5L12 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
                         <h3>Баланс эстетики и пользы</h3>
                         <p>Красивый дизайн должен быть удобным. Я создаю решения, которые нравятся и вам, и вашим пользователям.</p>
                     </div>
@@ -128,7 +120,7 @@
             </div>
         </section>
 
-        <!-- ЭКРАН 3: УСЛУГИ -->
+        <!-- ЭКРАН 3: УСЛУГИ (с иконками) -->
         <section id="services" class="services section-grid">
             <div class="container">
                 <div class="section-header">
@@ -137,7 +129,13 @@
                 </div>
                 <div class="services-list">
                     <div class="service-row">
-                        <div class="service-row__num mono-text">01</div>
+                        <div class="service-row__icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8 21H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 17V21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
                         <div class="service-row__content">
                             <h3>Лендинг / Сайт</h3>
                             <p>От прототипа до готового макета с адаптивом под все устройства. С фокусом на конверсию и удобство пользователя.</p>
@@ -145,7 +143,16 @@
                         <div class="service-row__meta mono-text">ОТ 2 НЕДЕЛЬ</div>
                     </div>
                     <div class="service-row">
-                        <div class="service-row__num mono-text">02</div>
+                        <div class="service-row__icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 16V22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M2 12H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M16 12H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
                         <div class="service-row__content">
                             <h3>Айдентика</h3>
                             <p>Логотип, цвета, типографика и базовый гайдлайн. Создаю визуальный язык, который выделяет вас среди конкурентов.</p>
@@ -153,7 +160,13 @@
                         <div class="service-row__meta mono-text">ОТ 1 НЕДЕЛИ</div>
                     </div>
                     <div class="service-row">
-                        <div class="service-row__num mono-text">03</div>
+                        <div class="service-row__icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M15 3L21 3L21 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M21 3L14 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
                         <div class="service-row__content">
                             <h3>Редизайн</h3>
                             <p>Анализ текущего сайта и его визуальное/структурное обновление. Сохраняю то, что работает, и усиливаю слабые места.</p>
@@ -213,12 +226,12 @@
                 </div>
                 <div class="section-cta section-cta--double">
                     <a href="#contact" class="btn btn--primary magnetic">Хотите такой же результат? Обсудить задачу</a>
-                    <a href="#" class="btn btn--outline magnetic">Смотреть ещё работы</a>
+                    <a href="#" class="btn btn--outline">Смотреть ещё работы</a>
                 </div>
             </div>
         </section>
 
-        <!-- ЭКРАН 5: ПРОЦЕСС -->
+        <!-- ЭКРАН 5: ПРОЦЕСС (с линиями-коннекторами) -->
         <section id="process" class="process section-grid">
             <div class="container">
                 <div class="section-header">
@@ -226,46 +239,48 @@
                     <h2>Процесс работы</h2>
                 </div>
                 <div class="process-timeline">
-                    <div class="process-line">
-                        <div class="process-line__progress"></div>
-                    </div>
                     <div class="process-step" data-step="1">
-                        <div class="process-step__marker">
-                            <div class="marker-dot"></div>
-                            <span class="step-number mono-text">01</span>
-                        </div>
                         <div class="process-step__content">
-                            <h3>Бриф и аналитика</h3>
+                            <div class="step-header">
+                                <span class="step-number mono-text">01</span>
+                                <h3>Бриф и аналитика</h3>
+                            </div>
                             <p>Созваниваемся на 20 минут, обсуждаем детали, цели и задачи вашего проекта. Погружаюсь в вашу нишу.</p>
                         </div>
                     </div>
+                    <div class="process-connector">
+                        <div class="process-connector__line"></div>
+                    </div>
                     <div class="process-step" data-step="2">
-                        <div class="process-step__marker">
-                            <div class="marker-dot"></div>
-                            <span class="step-number mono-text">02</span>
-                        </div>
                         <div class="process-step__content">
-                            <h3>Прототип</h3>
+                            <div class="step-header">
+                                <span class="step-number mono-text">02</span>
+                                <h3>Прототип</h3>
+                            </div>
                             <p>Согласовываем структуру и тексты без отвлекающего дизайна. Фокус на логике и пользовательском пути.</p>
                         </div>
                     </div>
+                    <div class="process-connector">
+                        <div class="process-connector__line"></div>
+                    </div>
                     <div class="process-step" data-step="3">
-                        <div class="process-step__marker">
-                            <div class="marker-dot"></div>
-                            <span class="step-number mono-text">03</span>
-                        </div>
                         <div class="process-step__content">
-                            <h3>Дизайн-концепция</h3>
+                            <div class="step-header">
+                                <span class="step-number mono-text">03</span>
+                                <h3>Дизайн-концепция</h3>
+                            </div>
                             <p>Показываю 1-2 варианта визуального стиля. Выбираем тот, что ближе вашему бренду и целям.</p>
                         </div>
                     </div>
+                    <div class="process-connector">
+                        <div class="process-connector__line"></div>
+                    </div>
                     <div class="process-step" data-step="4">
-                        <div class="process-step__marker">
-                            <div class="marker-dot"></div>
-                            <span class="step-number mono-text">04</span>
-                        </div>
                         <div class="process-step__content">
-                            <h3>Финализация и передача</h3>
+                            <div class="step-header">
+                                <span class="step-number mono-text">04</span>
+                                <h3>Финализация и передача</h3>
+                            </div>
                             <p>Отдаю все исходники, гайдлайны и помогаю с запуском. Поддержка после сдачи проекта.</p>
                         </div>
                     </div>
@@ -276,13 +291,29 @@
             </div>
         </section>
 
-        <!-- ЭКРАН 6: ОТЗЫВЫ -->
+        <!-- ЭКРАН 6: ОТЗЫВЫ И СТАТИСТИКА -->
         <section id="clients" class="clients section-grid">
             <div class="container">
                 <div class="section-header">
                     <span class="mono-tag">05 / СОЦИАЛЬНОЕ ДОКАЗАТЕЛЬСТВО</span>
-                    <h2>Отзывы клиентов</h2>
+                    <h2>Цифры и отзывы</h2>
                 </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="30">0</span><span class="stat-suffix">+</span>
+                        <span class="stat-label">проектов в работе</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="5">0</span><span class="stat-suffix">+</span>
+                        <span class="stat-label">лет опыта в дизайне</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="100">0</span><span class="stat-suffix">%</span>
+                        <span class="stat-label">работаю по договору</span>
+                    </div>
+                </div>
+
                 <div class="clients-logos">
                     <div class="logo-placeholder mono-text">LOGO 01</div>
                     <div class="logo-placeholder mono-text">LOGO 02</div>
@@ -314,79 +345,78 @@
             </div>
         </section>
 
-        <!-- ЭКРАН 7: FAQ (двухколоночный) -->
+        <!-- ЭКРАН 7: FAQ (одноколоночный, с воздухом) -->
         <section id="faq" class="faq section-grid">
             <div class="container">
                 <div class="section-header">
                     <span class="mono-tag">06 / ОТВЕТЫ НА ВОПРОСЫ</span>
                     <h2>Часто задаваемые вопросы</h2>
                 </div>
-                <div class="faq-grid">
-                    <div class="faq-list">
-                        <div class="faq-item">
-                            <button class="faq-question">
-                                <span class="faq-q-text">Как формируется цена?</span>
-                                <span class="faq-icon">
-                                    <span class="icon-line"></span>
-                                    <span class="icon-line"></span>
-                                </span>
-                            </button>
-                            <div class="faq-answer">
-                                <div class="faq-answer__inner">
-                                    <p>Цена зависит от объема работ и сложности проекта. После brief-созвона я предоставляю детальную смету с фиксированной стоимостью. Никаких скрытых платежей.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <button class="faq-question">
-                                <span class="faq-q-text">Сколько правок включено?</span>
-                                <span class="faq-icon">
-                                    <span class="icon-line"></span>
-                                    <span class="icon-line"></span>
-                                </span>
-                            </button>
-                            <div class="faq-answer">
-                                <div class="faq-answer__inner">
-                                    <p>В каждый этап включено 2-3 раунда правок. Этого достаточно, чтобы довести результат до идеала. Дополнительные правки обсуждаются отдельно.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <button class="faq-question">
-                                <span class="faq-q-text">Работаете ли по договору?</span>
-                                <span class="faq-icon">
-                                    <span class="icon-line"></span>
-                                    <span class="icon-line"></span>
-                                </span>
-                            </button>
-                            <div class="faq-answer">
-                                <div class="faq-answer__inner">
-                                    <p>Да, обязательно. Мы фиксируем цену, сроки и объем работ в договоре до начала проекта. Это защищает обе стороны и дает уверенность в результате.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <button class="faq-question">
-                                <span class="faq-q-text">Что если я не успею оплатить в срок?</span>
-                                <span class="faq-icon">
-                                    <span class="icon-line"></span>
-                                    <span class="icon-line"></span>
-                                </span>
-                            </button>
-                            <div class="faq-answer">
-                                <div class="faq-answer__inner">
-                                    <p>Мы всегда можем обсудить гибкий график оплаты. Обычно работа начинается после предоплаты 50%, остаток — после сдачи проекта.</p>
-                                </div>
+                
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-q-text">Как формируется цена?</span>
+                            <span class="faq-icon">
+                                <span class="icon-line"></span>
+                                <span class="icon-line"></span>
+                            </span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer__inner">
+                                <p>Цена зависит от объема работ и сложности проекта. После brief-созвона я предоставляю детальную смету с фиксированной стоимостью. Никаких скрытых платежей.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="faq-side">
-                        <div class="faq-side__text">FAQ</div>
-                        <div class="faq-side__cta">
-                            <h3>Не нашли ответ?</h3>
-                            <p>Напишите мне напрямую, и я отвечу на все ваши вопросы в течение 24 часов.</p>
-                            <a href="https://t.me/CheZaDesignn" target="_blank" class="btn btn--primary magnetic">Написать в Telegram</a>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-q-text">Сколько правок включено?</span>
+                            <span class="faq-icon">
+                                <span class="icon-line"></span>
+                                <span class="icon-line"></span>
+                            </span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer__inner">
+                                <p>В каждый этап включено 2-3 раунда правок. Этого достаточно, чтобы довести результат до идеала. Дополнительные правки обсуждаются отдельно.</p>
+                            </div>
                         </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-q-text">Работаете ли по договору?</span>
+                            <span class="faq-icon">
+                                <span class="icon-line"></span>
+                                <span class="icon-line"></span>
+                            </span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer__inner">
+                                <p>Да, обязательно. Мы фиксируем цену, сроки и объем работ в договоре до начала проекта. Это защищает обе стороны и дает уверенность в результате.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-q-text">Что если я не успею оплатить в срок?</span>
+                            <span class="faq-icon">
+                                <span class="icon-line"></span>
+                                <span class="icon-line"></span>
+                            </span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer__inner">
+                                <p>Мы всегда можем обсудить гибкий график оплаты. Обычно работа начинается после предоплаты 50%, остаток — после сдачи проекта.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-bottom-cta">
+                    <div class="faq-cta-card">
+                        <h3>Не нашли ответ?</h3>
+                        <p>Напишите мне напрямую в Telegram — отвечу в течение часа и помогу разобраться в вашем вопросе.</p>
+                        <a href="https://t.me/CheZaDesignn" target="_blank" class="btn btn--primary magnetic">Написать в Telegram ↗</a>
                     </div>
                 </div>
             </div>
@@ -440,7 +470,7 @@
                     <span class="mono-text">Дизайн с заботой о деталях</span>
                 </div>
                 <div class="footer__right">
-                    <span class="mono-text">v.2.3</span>
+                    <span class="mono-text">v.2.4</span>
                 </div>
             </div>
         </div>
@@ -448,4 +478,4 @@
 
     <script src="script.js"></script>
 </body>
-</html>м
+</html>
