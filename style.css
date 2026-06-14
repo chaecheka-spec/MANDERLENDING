@@ -820,11 +820,11 @@ body {
     font-size: 0.75rem;
 }
 
-/* --- 11. FAQ (С ВЕРТИКАЛЬНЫМИ БЕГУЩИМИ СТРОКАМИ ПО КРАЯМ ЭКРАНА) --- */
+/* --- 11. FAQ (С ОЧЕНЬ КРУПНЫМИ ВЕРТИКАЛЬНЫМИ СТРОКАМИ) --- */
 .faq {
     padding-bottom: 120px;
     position: relative;
-    overflow: visible; /* Позволяем строкам выходить за границы */
+    overflow: visible;
 }
 
 /* Вертикальные бегущие строки - fixed positioning по краям экрана */
@@ -832,12 +832,12 @@ body {
     position: fixed;
     top: 0;
     bottom: 0;
-    width: 140px; /* Увеличено с 100px */
+    width: 240px; /* Увеличено с 140px */
     overflow: hidden;
     display: flex;
     align-items: center;
     z-index: 100;
-    pointer-events: none; /* Чтобы не мешали кликам */
+    pointer-events: none;
 }
 
 .faq-vertical-marquee--left {
@@ -851,11 +851,11 @@ body {
 .faq-vertical-marquee__track {
     display: flex;
     flex-direction: column;
-    animation: marqueeVertical 20s linear infinite; /* Ускорено с 25s */
+    animation: marqueeVertical 25s linear infinite; /* Чуть замедлил для крупного текста */
     font-family: var(--font-heading);
-    font-size: 2rem; /* Увеличено с 1.4rem */
-    font-weight: 700; /* Увеличено с 600 */
-    letter-spacing: 0.2em; /* Увеличено с 0.15em */
+    font-size: 4rem; /* УВЕЛИЧЕНО В 2 РАЗА (было 2rem) */
+    font-weight: 700;
+    letter-spacing: 0.1em; /* Чуть сжал интервал, чтобы крупный текст смотрелся цельно */
     writing-mode: vertical-rl;
     text-orientation: mixed;
     white-space: nowrap;
@@ -864,23 +864,19 @@ body {
 /* Левая строка — приглушённая, серая */
 .faq-vertical-marquee--left .faq-vertical-marquee__track {
     color: var(--border-color);
-    opacity: 0.5;
+    opacity: 0.4;
 }
 
 /* Правая строка — синяя, в другую сторону */
 .faq-vertical-marquee--right .faq-vertical-marquee__track {
     color: var(--accent-color);
-    opacity: 0.4; /* Увеличено с 0.3 */
+    opacity: 0.3;
     animation-direction: reverse;
 }
 
 @keyframes marqueeVertical {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(-50%);
-    }
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
 }
 
 /* Центральный контент FAQ */
@@ -1030,17 +1026,17 @@ body {
 /* --- АДАПТИВНОСТЬ FAQ --- */
 @media (max-width: 1400px) {
     .faq-vertical-marquee {
-        width: 100px;
+        width: 180px; /* Увеличено с 100px */
     }
     
     .faq-vertical-marquee__track {
-        font-size: 1.6rem;
+        font-size: 3.2rem; /* Увеличено с 1.6rem */
     }
 }
 
 @media (max-width: 1024px) {
     .faq-vertical-marquee {
-        display: none; /* Скрываем на планшетах и мобильных */
+        display: none;
     }
 }
 
