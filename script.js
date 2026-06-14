@@ -87,26 +87,55 @@ document.querySelectorAll('.faq-question').forEach(button => {
     });
 });
 
-// 6. АНИМАЦИЯ ПРОЦЕССА (ЗМЕЙКА)
+// 6. АНИМАЦИЯ ПРОЦЕССА (ПЛАВНОЕ ЗАПОЛНЕНИЕ ЗМЕЙКИ ПРИ СКРОЛЛЕ)
 const processSteps = document.querySelectorAll('.process-step');
-const processConnectors = document.querySelectorAll('.process-connector');
+const snakeWrappers = document.querySelectorAll('.process-snake-wrapper');
+const snakeFills = document.querySelectorAll('.snake-fill');
 
+// Появление карточек при скролле
 const processObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            
-            // Найти коннектор перед этим шагом и заполнить его
-            const prevSibling = entry.target.previousElementSibling;
-            if (prevSibling && prevSibling.classList.contains('process-connector')) {
-                prevSibling.classList.add('filled');
-            }
         }
     });
 }, {
     threshold: 0.3,
     rootMargin: '0px 0px -100px 0px'
 });
+
+processSteps.forEach(step => processObserver.observe(step));
+
+// Плавное заполнение змеек при скролле
+function updateSnakes() {
+    snakeWrappers.forEach((wrapper, index) => {
+        const rect = wrapper.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const snakeFill = snakeFills[index];
+        
+        if (!snakeFill) return;
+        
+        // Вычисляем, насколько змейка видна в viewport
+        // 0 = только появилась снизу, 1 = полностью прошла через верх
+        const startPoint = windowHeight; // змейка появляется снизу экрана
+        const endPoint = -rect.height;   // змейка исчезает сверху
+        
+        const progress = (startPoint - rect.top) / (startPoint - endPoint);
+        const clampedProgress = Math.max(0, Math.min(1, progress));
+        
+        // Длина линии (подбираем под SVG path)
+        const pathLength = 500;
+        const offset = pathLength * (1 - clampedProgress);
+        
+        snakeFill.style.strokeDashoffset = offset;
+    });
+}
+
+// Запускаем при скролле
+window.addEventListener('scroll', updateSnakes, { passive: true });
+window.addEventListener('resize', updateSnakes);
+// Первичный вызов
+setTimeout(updateSnakes, 100);
 
 processSteps.forEach(step => processObserver.observe(step));
 

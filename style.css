@@ -254,12 +254,17 @@ body {
     flex-wrap: wrap;
 }
 
-/* --- 5. HERO (КОНТЕНТ НА ВСЮ ШИРИНУ) --- */
+/* --- 5. HERO (ВЫРАВНИВАНИЕ С МЕНЮ) --- */
 .hero {
     padding: 140px 0 100px;
     min-height: 90vh;
     display: flex;
     align-items: center;
+}
+
+.hero .container {
+    padding-left: 24px; /* Выравниваем с меню */
+    padding-right: 24px;
 }
 
 .hero__content {
@@ -524,17 +529,17 @@ body {
     opacity: 0.8;
 }
 
-/* --- 9. ПРОЦЕСС (ЗМЕЙКА) --- */
+/* --- 9. ПРОЦЕСС (ВЕРТИКАЛЬНАЯ ЗМЕЙКА) --- */
 .process-timeline {
     display: flex;
     flex-direction: column;
-    gap: 0;
-    max-width: 1000px;
+    align-items: center;
+    max-width: 800px;
     margin: 0 auto;
 }
 
 .process-step {
-    width: 50%;
+    width: 100%;
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.6s ease;
@@ -545,21 +550,11 @@ body {
     transform: translateY(0);
 }
 
-.process-step--left {
-    align-self: flex-start;
-    padding-right: 40px;
-}
-
-.process-step--right {
-    align-self: flex-end;
-    padding-left: 40px;
-}
-
 .process-step__content {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius);
-    padding: 32px;
+    padding: 36px;
     transition: all 0.4s ease;
 }
 
@@ -569,7 +564,8 @@ body {
 
 .process-step__content:hover {
     border-color: var(--accent-color);
-    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(37, 99, 235, 0.2);
 }
 
 .step-header {
@@ -592,14 +588,20 @@ body {
     font-weight: 600;
 }
 
-/* Змейка-коннектор */
-.process-connector {
-    width: 100%;
-    height: 80px;
+.process-step__content p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+/* Обёртка змейки */
+.process-snake-wrapper {
+    width: 200px;
+    height: 120px;
     display: flex;
     justify-content: center;
-    align-items: center;
     position: relative;
+    margin: 0;
 }
 
 .process-snake {
@@ -608,41 +610,40 @@ body {
     overflow: visible;
 }
 
-.snake-path {
+/* Фоновая (серая) линия змейки */
+.snake-bg {
     fill: none;
     stroke: var(--border-color);
-    stroke-width: 4;
+    stroke-width: 6;
     stroke-linecap: round;
-    stroke-dasharray: 200;
-    stroke-dashoffset: 200;
-    transition: stroke-dashoffset 0.8s ease, stroke 0.4s ease;
 }
 
-.process-connector.filled .snake-path {
-    stroke-dashoffset: 0;
+/* Заполняющаяся (синяя) линия змейки */
+.snake-fill {
+    fill: none;
+    stroke: url(#snakeGradient);
     stroke: var(--accent-color);
-    filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.6));
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+    transition: stroke-dashoffset 0.1s linear;
+    filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.5));
 }
 
-/* Адаптивность для змейки */
+/* Адаптивность */
 @media (max-width: 768px) {
-    .process-step {
-        width: 100%;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
+    .process-snake-wrapper {
+        width: 120px;
+        height: 80px;
     }
     
-    .process-step--left,
-    .process-step--right {
-        align-self: stretch;
+    .process-step__content {
+        padding: 24px;
     }
     
-    .process-connector {
-        height: 60px;
-    }
-    
-    .process-snake {
-        width: 60%;
+    .process-step__content h3 {
+        font-size: 1.3rem;
     }
 }
 
