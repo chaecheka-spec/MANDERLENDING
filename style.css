@@ -524,16 +524,17 @@ body {
     opacity: 0.8;
 }
 
-/* --- 9. ПРОЦЕСС (С ЛИНИЯМИ-КОННЕКТОРАМИ) --- */
+/* --- 9. ПРОЦЕСС (ЗМЕЙКА) --- */
 .process-timeline {
     display: flex;
     flex-direction: column;
     gap: 0;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 .process-step {
+    width: 50%;
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.6s ease;
@@ -542,6 +543,16 @@ body {
 .process-step.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+.process-step--left {
+    align-self: flex-start;
+    padding-right: 40px;
+}
+
+.process-step--right {
+    align-self: flex-end;
+    padding-left: 40px;
 }
 
 .process-step__content {
@@ -558,8 +569,7 @@ body {
 
 .process-step__content:hover {
     border-color: var(--accent-color);
-    transform: translateX(8px);
-    box-shadow: -4px 4px 24px rgba(37, 99, 235, 0.15);
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.15);
 }
 
 .step-header {
@@ -582,37 +592,58 @@ body {
     font-weight: 600;
 }
 
-/* Линии-коннекторы между шагами */
+/* Змейка-коннектор */
 .process-connector {
+    width: 100%;
+    height: 80px;
     display: flex;
     justify-content: center;
-    padding: 0;
-    height: 60px;
+    align-items: center;
     position: relative;
 }
 
-.process-connector__line {
-    width: 2px;
-    height: 100%;
-    background-color: var(--border-color);
-    position: relative;
-    overflow: hidden;
-}
-
-.process-connector__line::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
+.process-snake {
     width: 100%;
-    height: 0%;
-    background: linear-gradient(180deg, var(--accent-color), var(--accent-hover));
-    transition: height 0.6s ease;
-    box-shadow: 0 0 12px rgba(37, 99, 235, 0.6);
+    height: 100%;
+    overflow: visible;
 }
 
-.process-connector.filled .process-connector__line::after {
-    height: 100%;
+.snake-path {
+    fill: none;
+    stroke: var(--border-color);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    transition: stroke-dashoffset 0.8s ease, stroke 0.4s ease;
+}
+
+.process-connector.filled .snake-path {
+    stroke-dashoffset: 0;
+    stroke: var(--accent-color);
+    filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.6));
+}
+
+/* Адаптивность для змейки */
+@media (max-width: 768px) {
+    .process-step {
+        width: 100%;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    
+    .process-step--left,
+    .process-step--right {
+        align-self: stretch;
+    }
+    
+    .process-connector {
+        height: 60px;
+    }
+    
+    .process-snake {
+        width: 60%;
+    }
 }
 
 /* --- 10. КЛИЕНТЫ, СТАТИСТИКА И ОТЗЫВЫ --- */

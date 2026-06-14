@@ -87,7 +87,7 @@ document.querySelectorAll('.faq-question').forEach(button => {
     });
 });
 
-// 6. АНИМАЦИЯ ПРОЦЕССА (ЛИНИИ-КОННЕКТОРЫ)
+// 6. АНИМАЦИЯ ПРОЦЕССА (ЗМЕЙКА)
 const processSteps = document.querySelectorAll('.process-step');
 const processConnectors = document.querySelectorAll('.process-connector');
 
