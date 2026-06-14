@@ -532,24 +532,24 @@ body {
     opacity: 0.8;
 }
 
-/* --- 9. ПРОЦЕСС (STICKY-АНИМАЦИЯ — КОМПАКТНАЯ) --- */
+/* --- 9. ПРОЦЕСС (STICKY-АНИМАЦИЯ — ОЧЕНЬ КОМПАКТНАЯ) --- */
 .process {
     position: relative;
 }
 
 .process-sticky-wrapper {
     position: relative;
-    height: 200vh; /* Уменьшено с 400vh до 200vh — меньше скролла */
+    height: 120vh; /* Уменьшено с 200vh до 120vh — намного компактнее */
 }
 
 .process-progress {
     position: sticky;
-    top: 120px;
+    top: 100px;
     z-index: 10;
     display: flex;
     align-items: center;
-    gap: 24px;
-    margin-bottom: 40px;
+    gap: 16px;
+    margin-bottom: 20px;
     padding: 0 24px;
 }
 
@@ -562,10 +562,10 @@ body {
 }
 
 .process-progress__text {
-    font-size: 1rem;
+    font-size: 0.85rem;
     color: var(--text-secondary);
     white-space: nowrap;
-    min-width: 80px;
+    min-width: 60px;
 }
 
 .process-progress__text .current-step {
@@ -580,15 +580,15 @@ body {
 
 .process-card {
     position: sticky;
-    top: 180px; /* Уменьшено с 200px */
+    top: 140px;
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius);
-    padding: 40px; /* Уменьшено с 48px */
-    margin-bottom: 20px; /* Уменьшено с 40px */
+    padding: 28px;
+    margin-bottom: 12px;
     display: grid;
-    grid-template-columns: 100px 1fr; /* Уменьшено с 120px */
-    gap: 32px; /* Уменьшено с 48px */
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
     align-items: start;
     transition: all 0.4s ease;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -596,34 +596,34 @@ body {
 
 .process-card:hover {
     border-color: var(--accent-color);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(37, 99, 235, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(37, 99, 235, 0.2);
 }
 
-/* Меньший разброс top — карточки меньше наезжают друг на друга */
+/* Минимальный разброс top — карточки почти не наезжают */
 .process-card--1 {
-    top: 180px;
+    top: 140px;
     z-index: 1;
 }
 
 .process-card--2 {
-    top: 200px; /* Разница всего 20px вместо 40px */
+    top: 150px;
     z-index: 2;
 }
 
 .process-card--3 {
-    top: 220px;
+    top: 160px;
     z-index: 3;
 }
 
 .process-card--4 {
-    top: 240px;
+    top: 170px;
     z-index: 4;
 }
 
 .process-card__number {
     font-family: var(--font-heading);
-    font-size: 4rem; /* Уменьшено с 5rem */
+    font-size: 3rem;
     font-weight: 700;
     color: transparent;
     -webkit-text-stroke: 2px var(--accent-color);
@@ -633,47 +633,47 @@ body {
 
 .process-card:hover .process-card__number {
     -webkit-text-stroke-color: var(--text-primary);
-    text-shadow: 0 0 30px rgba(37, 99, 235, 0.5);
+    text-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
 }
 
 .process-card__content h3 {
     font-family: var(--font-heading);
-    font-size: 1.8rem; /* Уменьшено с 2rem */
+    font-size: 1.5rem;
     color: var(--text-primary);
-    margin-bottom: 12px; /* Уменьшено с 16px */
+    margin-bottom: 10px;
     font-weight: 600;
 }
 
 .process-card__content p {
     color: var(--text-secondary);
-    line-height: 1.6; /* Уменьшено с 1.7 */
-    font-size: 1.05rem; /* Уменьшено с 1.1rem */
+    line-height: 1.5;
+    font-size: 1rem;
 }
 
 /* Адаптивность */
 @media (max-width: 768px) {
     .process-sticky-wrapper {
-        height: 180vh; /* Уменьшено с 300vh */
+        height: 100vh;
     }
     
     .process-card {
         grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 28px;
-        top: 140px !important;
-        margin-bottom: 15px;
+        gap: 16px;
+        padding: 24px;
+        top: 120px !important;
+        margin-bottom: 10px;
     }
     
     .process-card__number {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
     
     .process-card__content h3 {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
     
     .process-progress {
-        top: 100px;
+        top: 80px;
     }
 }
 
