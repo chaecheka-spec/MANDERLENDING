@@ -254,7 +254,7 @@ body {
     flex-wrap: wrap;
 }
 
-/* --- 5. HERO (ВЫРАВНИВАНИЕ С МЕНЮ) --- */
+/* --- 5. HERO (ВЫРАВНИВАНИЕ ПО ЛЕВОМУ КРАЮ) --- */
 .hero {
     padding: 140px 0 100px;
     min-height: 90vh;
@@ -263,14 +263,15 @@ body {
 }
 
 .hero .container {
-    max-width: var(--container-width);
-    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
     padding: 0 24px; /* Выравниваем с меню */
 }
 
 .hero__content {
     max-width: 900px;
-    margin-left: 0; /* Прижимаем к левому краю */
+    margin: 0; /* Убираем центрирование */
+    text-align: left; /* Явное выравнивание по левому краю */
 }
 
 .hero__meta {
@@ -531,128 +532,158 @@ body {
     opacity: 0.8;
 }
 
-/* --- 9. ПРОЦЕСС (НЕПРЕРЫВНАЯ ЗМЕЙКА) --- */
-.process-timeline-wrapper {
+/* --- 9. ПРОЦЕСС (STICKY-АНИМАЦИЯ) --- */
+.process {
     position: relative;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 40px 0;
 }
 
-.process-snake-svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-.snake-bg {
-    fill: none;
-    stroke: var(--border-color);
-    stroke-width: 4;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.snake-fill {
-    fill: none;
-    stroke: var(--accent-color);
-    stroke-width: 4;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 3000;
-    stroke-dashoffset: 3000;
-    filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.6));
-    transition: stroke-dashoffset 0.1s linear;
-}
-
-.process-steps {
+.process-sticky-wrapper {
     position: relative;
-    z-index: 1;
+    height: 400vh; /* Высота для скролла (4 карточки × 100vh) */
+}
+
+.process-progress {
+    position: sticky;
+    top: 120px;
+    z-index: 10;
     display: flex;
-    flex-direction: column;
-    gap: 40px;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 40px;
+    padding: 0 24px;
 }
 
-.process-step {
-    width: 50%;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
+.process-progress__bar {
+    flex: 1;
+    height: 2px;
+    background-color: var(--border-color);
+    position: relative;
+    overflow: hidden;
 }
 
-.process-step.visible {
-    opacity: 1;
-    transform: translateY(0);
+.process-progress__bar::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.6);
 }
 
-.process-step:nth-child(odd) {
-    align-self: flex-end;
-    padding-left: 60px;
+.process-progress__text {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
 }
 
-.process-step:nth-child(even) {
-    align-self: flex-start;
-    padding-right: 60px;
+.process-progress__text .current-step {
+    color: var(--accent-color);
+    font-weight: 600;
 }
 
-.process-step__content {
+.process-sticky-container {
+    position: relative;
+    padding: 0 24px;
+}
+
+.process-card {
+    position: sticky;
+    top: 200px;
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius);
-    padding: 32px;
+    padding: 48px;
+    margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 48px;
+    align-items: start;
     transition: all 0.4s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-.process-step.visible .process-step__content {
-    border-color: rgba(37, 99, 235, 0.3);
-}
-
-.process-step__content:hover {
+.process-card:hover {
     border-color: var(--accent-color);
     transform: translateY(-4px);
     box-shadow: 0 12px 40px rgba(37, 99, 235, 0.2);
 }
 
-.step-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 16px;
+/* Разные top для эффекта наложения */
+.process-card--1 {
+    top: 200px;
+    z-index: 1;
 }
 
-.step-number {
-    color: var(--accent-color);
-    font-size: 1rem;
-    font-weight: 600;
+.process-card--2 {
+    top: 240px;
+    z-index: 2;
 }
 
-.process-step__content h3 {
+.process-card--3 {
+    top: 280px;
+    z-index: 3;
+}
+
+.process-card--4 {
+    top: 320px;
+    z-index: 4;
+}
+
+.process-card__number {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
+    font-size: 5rem;
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--accent-color);
+    line-height: 1;
+    transition: all 0.4s ease;
+}
+
+.process-card:hover .process-card__number {
+    -webkit-text-stroke-color: var(--text-primary);
+    text-shadow: 0 0 30px rgba(37, 99, 235, 0.5);
+}
+
+.process-card__content h3 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
     color: var(--text-primary);
+    margin-bottom: 16px;
     font-weight: 600;
 }
 
-.process-step__content p {
+.process-card__content p {
     color: var(--text-secondary);
-    line-height: 1.6;
-    font-size: 1.05rem;
+    line-height: 1.7;
+    font-size: 1.1rem;
 }
 
 /* Адаптивность */
 @media (max-width: 768px) {
-    .process-step {
-        width: 100%;
-        padding-left: 40px !important;
-        padding-right: 0 !important;
+    .process-sticky-wrapper {
+        height: 300vh;
     }
     
-    .process-step:nth-child(even) {
-        padding-right: 0;
+    .process-card {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 32px;
+        top: 150px !important;
+    }
+    
+    .process-card__number {
+        font-size: 3rem;
+    }
+    
+    .process-card__content h3 {
+        font-size: 1.5rem;
+    }
+    
+    .process-progress {
+        top: 100px;
     }
 }
 

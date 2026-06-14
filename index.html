@@ -231,65 +231,61 @@
             </div>
         </section>
 
-<!-- ЭКРАН 5: ПРОЦЕСС (непрерывная змейка) -->
+<!-- ЭКРАН 5: ПРОЦЕСС (STICKY-АНИМАЦИЯ) -->
 <section id="process" class="process section-grid">
     <div class="container">
         <div class="section-header">
             <span class="mono-tag">04 / ПРОСТОЙ И ПОНЯТНЫЙ ПУТЬ К РЕЗУЛЬТАТУ</span>
             <h2>Процесс работы</h2>
         </div>
-        
-        <div class="process-timeline-wrapper">
-            <!-- SVG змейка (абсолютное позиционирование) -->
-            <svg class="process-snake-svg" id="processSnake">
-                <path class="snake-bg" id="snakeBg" />
-                <path class="snake-fill" id="snakeFill" />
-            </svg>
-            
-            <!-- Карточки процесса -->
-            <div class="process-steps">
-                <div class="process-step" data-step="1">
-                    <div class="process-step__content">
-                        <div class="step-header">
-                            <span class="step-number mono-text">01</span>
-                            <h3>Бриф и аналитика</h3>
-                        </div>
-                        <p>Созваниваемся на 20 минут, обсуждаем детали, цели и задачи вашего проекта. Погружаюсь в вашу нишу.</p>
-                    </div>
-                </div>
-                
-                <div class="process-step" data-step="2">
-                    <div class="process-step__content">
-                        <div class="step-header">
-                            <span class="step-number mono-text">02</span>
-                            <h3>Прототип</h3>
-                        </div>
-                        <p>Согласовываем структуру и тексты без отвлекающего дизайна. Фокус на логике и пользовательском пути.</p>
-                    </div>
-                </div>
-                
-                <div class="process-step" data-step="3">
-                    <div class="process-step__content">
-                        <div class="step-header">
-                            <span class="step-number mono-text">03</span>
-                            <h3>Дизайн-концепция</h3>
-                        </div>
-                        <p>Показываю 1-2 варианта визуального стиля. Выбираем тот, что ближе вашему бренду и целям.</p>
-                    </div>
-                </div>
-                
-                <div class="process-step" data-step="4">
-                    <div class="process-step__content">
-                        <div class="step-header">
-                            <span class="step-number mono-text">04</span>
-                            <h3>Финализация и передача</h3>
-                        </div>
-                        <p>Отдаю все исходники, гайдлайны и помогаю с запуском. Поддержка после сдачи проекта.</p>
-                    </div>
-                </div>
+    </div>
+    
+    <div class="process-sticky-wrapper">
+        <!-- Индикатор прогресса -->
+        <div class="process-progress">
+            <div class="process-progress__bar"></div>
+            <div class="process-progress__text mono-text">
+                <span class="current-step">01</span> / 04
             </div>
         </div>
         
+        <!-- Карточки с sticky-эффектом -->
+        <div class="process-sticky-container">
+            <div class="process-card process-card--1" data-step="1">
+                <div class="process-card__number">01</div>
+                <div class="process-card__content">
+                    <h3>Бриф и аналитика</h3>
+                    <p>Созваниваемся на 20 минут, обсуждаем детали, цели и задачи вашего проекта. Погружаюсь в вашу нишу и изучаю конкурентов.</p>
+                </div>
+            </div>
+            
+            <div class="process-card process-card--2" data-step="2">
+                <div class="process-card__number">02</div>
+                <div class="process-card__content">
+                    <h3>Прототип</h3>
+                    <p>Согласовываем структуру и тексты без отвлекающего дизайна. Фокус на логике и пользовательском пути к целевому действию.</p>
+                </div>
+            </div>
+            
+            <div class="process-card process-card--3" data-step="3">
+                <div class="process-card__number">03</div>
+                <div class="process-card__content">
+                    <h3>Дизайн-концепция</h3>
+                    <p>Показываю 1-2 варианта визуального стиля. Выбираем тот, что ближе вашему бренду, аудитории и бизнес-целям.</p>
+                </div>
+            </div>
+            
+            <div class="process-card process-card--4" data-step="4">
+                <div class="process-card__number">04</div>
+                <div class="process-card__content">
+                    <h3>Финализация и передача</h3>
+                    <p>Отдаю все исходники, гайдлайны и помогаю с запуском. Поддержка после сдачи проекта в течение месяца.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
         <div class="section-cta">
             <a href="#contact" class="btn btn--primary magnetic">Готовы начать с Шага 1? Заполните короткую форму</a>
         </div>
