@@ -87,91 +87,38 @@ document.querySelectorAll('.faq-question').forEach(button => {
     });
 });
 
-// 6. АНИМАЦИЯ ПРОЦЕССА (ЛЕСТНИЦА С ПРОГРЕССОМ)
-const processSection = document.getElementById('process');
-const stairSteps = document.querySelectorAll('.stair-step');
-const stairConnectors = document.querySelectorAll('.stair-connector');
-const progressPercent = document.querySelector('.progress-percent');
+// 6. АНИМАЦИЯ ПРОЦЕССА (КРУГОВАЯ ИНФОГРАФИКА)
+const processSteps = document.querySelectorAll('.process-step-item');
+const orbitBalls = document.querySelectorAll('.orbit-ball');
 
-// Появление карточек при скролле
+// Активация шагов при скролле
 const processObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            entry.target.classList.add('active');
+            
+            // Активируем соответствующий шарик на орбите
+            const stepNumber = entry.target.getAttribute('data-step');
+            const ball = document.querySelector(`.orbit-ball[data-ball="${stepNumber}"]`);
+            if (ball) {
+                ball.classList.add('active');
+            }
+        } else {
+            entry.target.classList.remove('active');
+            
+            const stepNumber = entry.target.getAttribute('data-step');
+            const ball = document.querySelector(`.orbit-ball[data-ball="${stepNumber}"]`);
+            if (ball) {
+                ball.classList.remove('active');
+            }
         }
     });
 }, {
-    threshold: 0.3,
-    rootMargin: '0px 0px -100px 0px'
+    threshold: 0.5,
+    rootMargin: '0px 0px -20% 0px'
 });
 
-stairSteps.forEach(step => processObserver.observe(step));
-
-// Активация шагов и заполнение коннекторов при скролле
-function updateStaircaseProgress() {
-    if (!processSection) return;
-    
-    const windowHeight = window.innerHeight;
-    const sectionRect = processSection.getBoundingClientRect();
-    
-    // Общий прогресс секции (0-100%)
-    const sectionProgress = Math.max(0, Math.min(100, 
-        ((windowHeight - sectionRect.top) / sectionRect.height) * 100
-    ));
-    
-    // Обновляем прогресс-бар
-    const progressBarFill = document.querySelector('.process-progress-bar__fill');
-    if (progressBarFill) {
-        let indicator = progressBarFill.querySelector('.progress-indicator');
-        if (!indicator) {
-            indicator = document.createElement('div');
-            indicator.className = 'progress-indicator';
-            indicator.style.cssText = `
-                position: absolute;
-                left: 0;
-                top: 0;
-                height: 100%;
-                background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
-                border-radius: 2px;
-                transition: width 0.3s ease;
-                box-shadow: 0 0 10px rgba(37, 99, 235, 0.6);
-            `;
-            progressBarFill.appendChild(indicator);
-        }
-        indicator.style.width = `${sectionProgress}%`;
-    }
-    
-    if (progressPercent) {
-        progressPercent.textContent = Math.floor(sectionProgress);
-    }
-    
-    // Активируем шаги по мере скролла
-    let activeStepsCount = 0;
-    stairSteps.forEach((step, index) => {
-        const stepRect = step.getBoundingClientRect();
-        const stepMiddle = stepRect.top + stepRect.height / 2;
-        
-        if (stepMiddle < windowHeight * 0.7) {
-            step.classList.add('active');
-            activeStepsCount = index + 1;
-        } else {
-            step.classList.remove('active');
-        }
-    });
-    
-    // Заполняем коннекторы между активными шагами
-    stairConnectors.forEach((connector, index) => {
-        if (index < activeStepsCount - 1) {
-            connector.classList.add('filled');
-        } else {
-            connector.classList.remove('filled');
-        }
-    });
-}
-
-window.addEventListener('scroll', updateStaircaseProgress, { passive: true });
-window.addEventListener('resize', updateStaircaseProgress);
-setTimeout(updateStaircaseProgress, 100);
+processSteps.forEach(step => processObserver.observe(step));
 
 // 7. СЧЁТЧИКИ С АНИМАЦИЕЙ
 const statNumbers = document.querySelectorAll('.stat-number');
