@@ -958,23 +958,23 @@ body {
     font-size: 0.75rem;
 }
 
-/* --- 11. FAQ (С ОЧЕНЬ КРУПНЫМИ ВЕРТИКАЛЬНЫМИ СТРОКАМИ) --- */
+/* --- 11. FAQ (С ВЕРТИКАЛЬНЫМИ БЕГУЩИМИ СТРОКАМИ) --- */
 .faq {
     padding-bottom: 120px;
-    position: relative;
-    overflow: visible;
+    position: relative; /* Важно! */
+    overflow: hidden; /* Обрезаем строки по краям секции */
 }
 
-/* Вертикальные бегущие строки - fixed positioning по краям экрана */
+/* Вертикальные бегущие строки - absolute внутри секции FAQ */
 .faq-vertical-marquee {
-    position: fixed;
+    position: absolute; /* Было fixed, стало absolute */
     top: 0;
     bottom: 0;
-    width: 240px; /* Увеличено с 140px */
+    width: 240px;
     overflow: hidden;
     display: flex;
     align-items: center;
-    z-index: 100;
+    z-index: 1; /* Под контентом */
     pointer-events: none;
 }
 
@@ -989,11 +989,11 @@ body {
 .faq-vertical-marquee__track {
     display: flex;
     flex-direction: column;
-    animation: marqueeVertical 25s linear infinite; /* Чуть замедлил для крупного текста */
+    animation: marqueeVertical 25s linear infinite;
     font-family: var(--font-heading);
-    font-size: 4rem; /* УВЕЛИЧЕНО В 2 РАЗА (было 2rem) */
+    font-size: 4rem;
     font-weight: 700;
-    letter-spacing: 0.1em; /* Чуть сжал интервал, чтобы крупный текст смотрелся цельно */
+    letter-spacing: 0.1em;
     writing-mode: vertical-rl;
     text-orientation: mixed;
     white-space: nowrap;
@@ -1020,7 +1020,7 @@ body {
 /* Центральный контент FAQ */
 .faq .container {
     position: relative;
-    z-index: 2;
+    z-index: 2; /* Поверх строк */
     max-width: 900px;
 }
 
@@ -1164,11 +1164,11 @@ body {
 /* --- АДАПТИВНОСТЬ FAQ --- */
 @media (max-width: 1400px) {
     .faq-vertical-marquee {
-        width: 180px; /* Увеличено с 100px */
+        width: 180px;
     }
     
     .faq-vertical-marquee__track {
-        font-size: 3.2rem; /* Увеличено с 1.6rem */
+        font-size: 3.2rem;
     }
 }
 
