@@ -1,55 +1,89 @@
 /* ============================================
    ПЕРЕМЕННЫЕ И БАЗОВЫЕ СТИЛИ
-   Версия: 3.0
-   Палитра: Оникс (#020202) + Пастельный голубой (#b2d5e5)
+   Версия: 3.1
+   Палитра: Оникс (#020202) + Яркий синий (#3B82F6) + Пастельный голубой (#b2d5e5)
+   
+   Двухуровневая цветовая система:
+   - Primary (основной): #3B82F6 — кнопки, активные элементы, CTA
+   - Secondary (второстепенный): #b2d5e5 — иконки, номера, декор, hover
    ============================================ */
 
 :root {
-    /* Цветовая палитра */
-    --color-bg: #020202;           /* Оникс - основной фон */
+    /* ============================================
+       ЦВЕТОВАЯ ПАЛИТРА
+       ============================================ */
+    
+    /* Фоны */
+    --color-bg: #020202;           /* Оникс — основной фон сайта */
     --color-bg-card: #0A0A0A;      /* Чуть светлее для карточек */
-    --color-bg-elevated: #121212;  /* Для hover-состояний */
+    --color-bg-elevated: #121212;  /* Для hover-состояний карточек */
     
-    --color-text-primary: #FFFFFF;
-    --color-text-secondary: #A1A1AA;
-    --color-text-muted: #71717A;
+    /* Текст */
+    --color-text-primary: #FFFFFF;     /* Заголовки, важный текст */
+    --color-text-secondary: #A1A1AA;   /* Основной текст, описания */
+    --color-text-muted: #71717A;       /* Вспомогательный текст, подписи */
     
-    --color-accent: #b2d5e5;       /* Пастельный голубой */
-    --color-accent-hover: #8fb8cc; /* Темнее для hover */
-    --color-accent-active: #6fa0b8;/* Ещё темнее для active */
-    --color-accent-rgb: 178, 213, 229; /* Для rgba() */
+    /* PRIMARY — Яркий синий (главные акценты) */
+    /* Используется для: кнопок CTA, активных состояний, progress bar, 
+       курсора, ссылок при hover, активных карточек FAQ */
+    --color-accent: #3B82F6;           /* Основной яркий синий */
+    --color-accent-hover: #2563EB;     /* Темнее для hover */
+    --color-accent-active: #1D4ED8;    /* Ещё темнее для active/click */
+    --color-accent-rgb: 59, 130, 246;  /* RGB-версия для rgba() */
     
-    --color-border: #27272A;
-    --color-border-hover: #3F3F46;
+    /* SECONDARY — Пастельный голубой (второстепенные акценты) */
+    /* Используется для: иконок, номеров секций, тега DESIGN, 
+       счётчиков, бегущей строки FAQ, мета-данных Hero */
+    --color-secondary: #b2d5e5;        /* Основной пастельный голубой */
+    --color-secondary-hover: #8fb8cc;  /* Темнее для hover */
+    --color-secondary-active: #6fa0b8; /* Ещё темнее для active */
+    --color-secondary-rgb: 178, 213, 229;
     
-    --color-success: #10B981;
-    --color-error: #EF4444;
+    /* Границы */
+    --color-border: #27272A;           /* Основные границы */
+    --color-border-hover: #3F3F46;     /* Границы при hover */
     
-    /* Типографика */
-    --font-heading: 'Space Grotesk', sans-serif;
-    --font-body: 'Manrope', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
+    /* Служебные цвета */
+    --color-success: #10B981;          /* Зелёный — успех */
+    --color-error: #EF4444;            /* Красный — ошибка */
     
-    /* Размеры и отступы */
-    --container-width: 1920px;
-    --side-padding: 12px;
-    --radius: 8px;
-    --radius-sm: 4px;
-    --radius-lg: 12px;
+    /* ============================================
+       ТИПОГРАФИКА
+       ============================================ */
+    --font-heading: 'Space Grotesk', sans-serif;   /* Заголовки */
+    --font-body: 'Manrope', sans-serif;            /* Основной текст */
+    --font-mono: 'JetBrains Mono', monospace;      /* Технические метки, номера */
     
-    /* Переходы */
-    --transition-fast: 0.2s ease;
-    --transition-base: 0.3s ease;
-    --transition-slow: 0.5s ease;
+    /* ============================================
+       РАЗМЕРЫ И ОТСТУПЫ
+       ============================================ */
+    --container-width: 1920px;       /* Максимальная ширина контента */
+    --side-padding: 12px;            /* Боковые отступы (стиль Zapal) */
     
-    /* Тени */
+    --radius: 8px;                   /* Основной радиус скругления */
+    --radius-sm: 4px;                /* Маленький (теги, бейджи) */
+    --radius-lg: 12px;               /* Большой (крупные карточки) */
+    
+    /* ============================================
+       ПЕРЕХОДЫ (TRANSITIONS)
+       ============================================ */
+    --transition-fast: 0.2s ease;    /* Быстрые: hover, cursor */
+    --transition-base: 0.3s ease;    /* Основные: кнопки, карточки */
+    --transition-slow: 0.5s ease;    /* Медленные: появление блоков */
+    
+    /* ============================================
+       ТЕНИ
+       ============================================ */
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
     --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
     --shadow-accent: 0 8px 32px rgba(var(--color-accent-rgb), 0.3);
+    --shadow-secondary: 0 8px 32px rgba(var(--color-secondary-rgb), 0.2);
 }
 
-/* Reset */
+/* ============================================
+   RESET — Сброс базовых стилей браузера
+   ============================================ */
 * {
     margin: 0;
     padding: 0;
@@ -67,18 +101,24 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    cursor: none;
+    cursor: none; /* Скрываем стандартный курсор для кастомного */
     overflow-x: hidden;
 }
 
-/* Контейнер */
+/* ============================================
+   КОНТЕЙНЕР
+   ============================================ */
 .container {
     max-width: var(--container-width);
     margin: 0 auto;
     padding: 0 var(--side-padding);
 }
 
-/* Типографика */
+/* ============================================
+   УТИЛИТАРНЫЕ КЛАССЫ
+   ============================================ */
+
+/* Моноширинный текст (технические метки) */
 .mono-text, .mono-tag, .mono-index {
     font-family: var(--font-mono);
     font-size: 0.75rem;
@@ -87,16 +127,26 @@ body {
     color: var(--color-text-secondary);
 }
 
+/* Акцентный текст (использует primary цвет) */
 .text-accent {
     color: var(--color-accent);
 }
 
-/* Разделители секций */
+/* Второстепенный акцентный текст */
+.text-secondary {
+    color: var(--color-secondary);
+}
+
+/* ============================================
+   РАЗДЕЛИТЕЛИ СЕКЦИЙ
+   ============================================ */
 .section-grid {
     border-bottom: 1px solid var(--color-border);
 }
 
-/* Заголовки секций */
+/* ============================================
+   ЗАГОЛОВКИ СЕКЦИЙ
+   ============================================ */
 .section-header {
     display: flex;
     flex-direction: column;
@@ -112,7 +162,9 @@ body {
     font-weight: 600;
 }
 
-/* CTA блоки */
+/* ============================================
+   CTA БЛОКИ (кнопки под секциями)
+   ============================================ */
 .section-cta {
     margin-top: 64px;
     margin-bottom: 80px;
@@ -125,7 +177,11 @@ body {
     flex-wrap: wrap;
 }
 
-/* Анимации */
+/* ============================================
+   АНИМАЦИИ
+   ============================================ */
+
+/* Появление снизу вверх */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -137,6 +193,7 @@ body {
     }
 }
 
+/* Пульсация (для активных элементов) */
 @keyframes pulse {
     0%, 100% {
         box-shadow: 0 0 0 0 rgba(var(--color-accent-rgb), 0.5);
@@ -146,22 +203,42 @@ body {
     }
 }
 
+/* Пульсация для secondary элементов */
+@keyframes pulseSecondary {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(var(--color-secondary-rgb), 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 12px rgba(var(--color-secondary-rgb), 0);
+    }
+}
+
+/* Вращение по часовой стрелке */
 @keyframes rotate {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
 
+/* Горизонтальная бегущая строка */
 @keyframes marquee {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
 
+/* Вертикальная бегущая строка */
 @keyframes marqueeVertical {
     0% { transform: translateY(0); }
     100% { transform: translateY(-50%); }
 }
 
+/* Вращение иконки при hover */
 @keyframes iconSpin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
+}
+
+/* Плавание (для декоративных элементов) */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
