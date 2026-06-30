@@ -1,0 +1,10 @@
+# Разрешаем всем поисковым роботам индексировать сайт
+User-agent: *
+Allow: /
+
+# Указываем путь к карте сайта
+Sitemap: https://chaecheka-spec.github.io/MANDERLENDING/sitemap.xml
+
+# Запрещаем индексировать технические файлы (если понадобятся)
+# Disallow: /css/
+# Disallow: /js/

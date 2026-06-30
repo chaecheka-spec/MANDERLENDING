@@ -1,0 +1,167 @@
+/* ============================================
+   ПЕРЕМЕННЫЕ И БАЗОВЫЕ СТИЛИ
+   Версия: 3.0
+   Палитра: Оникс (#020202) + Пастельный голубой (#b2d5e5)
+   ============================================ */
+
+:root {
+    /* Цветовая палитра */
+    --color-bg: #020202;           /* Оникс - основной фон */
+    --color-bg-card: #0A0A0A;      /* Чуть светлее для карточек */
+    --color-bg-elevated: #121212;  /* Для hover-состояний */
+    
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #A1A1AA;
+    --color-text-muted: #71717A;
+    
+    --color-accent: #b2d5e5;       /* Пастельный голубой */
+    --color-accent-hover: #8fb8cc; /* Темнее для hover */
+    --color-accent-active: #6fa0b8;/* Ещё темнее для active */
+    --color-accent-rgb: 178, 213, 229; /* Для rgba() */
+    
+    --color-border: #27272A;
+    --color-border-hover: #3F3F46;
+    
+    --color-success: #10B981;
+    --color-error: #EF4444;
+    
+    /* Типографика */
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Manrope', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    
+    /* Размеры и отступы */
+    --container-width: 1920px;
+    --side-padding: 12px;
+    --radius: 8px;
+    --radius-sm: 4px;
+    --radius-lg: 12px;
+    
+    /* Переходы */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Тени */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+    --shadow-accent: 0 8px 32px rgba(var(--color-accent-rgb), 0.3);
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text-secondary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: none;
+    overflow-x: hidden;
+}
+
+/* Контейнер */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--side-padding);
+}
+
+/* Типографика */
+.mono-text, .mono-tag, .mono-index {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+}
+
+.text-accent {
+    color: var(--color-accent);
+}
+
+/* Разделители секций */
+.section-grid {
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* Заголовки секций */
+.section-header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 48px;
+    padding-top: 80px;
+}
+
+.section-header h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-text-primary);
+    font-weight: 600;
+}
+
+/* CTA блоки */
+.section-cta {
+    margin-top: 64px;
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.section-cta--double {
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(var(--color-accent-rgb), 0.5);
+    }
+    50% {
+        box-shadow: 0 0 0 15px rgba(var(--color-accent-rgb), 0);
+    }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes marqueeVertical {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+
+@keyframes iconSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
