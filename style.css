@@ -960,21 +960,26 @@ body {
 
 /* --- 11. FAQ (С ВЕРТИКАЛЬНЫМИ БЕГУЩИМИ СТРОКАМИ) --- */
 .faq {
-    padding-bottom: 120px;
-    position: relative; /* Важно! */
-    overflow: hidden; /* Обрезаем строки по краям секции */
+    padding: 0 0 120px 0;
+    position: relative;
 }
 
-/* Вертикальные бегущие строки - absolute внутри секции FAQ */
+.faq__wrapper {
+    position: relative;
+    min-height: 1200px; /* Достаточная высота для строк */
+    overflow: hidden; /* Обрезаем всё, что выходит за границы */
+}
+
+/* Вертикальные бегущие строки */
 .faq-vertical-marquee {
-    position: absolute; /* Было fixed, стало absolute */
+    position: absolute;
     top: 0;
     bottom: 0;
     width: 240px;
     overflow: hidden;
     display: flex;
     align-items: center;
-    z-index: 1; /* Под контентом */
+    z-index: 1;
     pointer-events: none;
 }
 
@@ -999,13 +1004,11 @@ body {
     white-space: nowrap;
 }
 
-/* Левая строка — приглушённая, серая */
 .faq-vertical-marquee--left .faq-vertical-marquee__track {
     color: var(--border-color);
     opacity: 0.4;
 }
 
-/* Правая строка — синяя, в другую сторону */
 .faq-vertical-marquee--right .faq-vertical-marquee__track {
     color: var(--accent-color);
     opacity: 0.3;
@@ -1020,8 +1023,9 @@ body {
 /* Центральный контент FAQ */
 .faq .container {
     position: relative;
-    z-index: 2; /* Поверх строк */
+    z-index: 2;
     max-width: 900px;
+    padding-top: 80px;
 }
 
 .faq-list {
@@ -1173,6 +1177,10 @@ body {
 }
 
 @media (max-width: 1024px) {
+    .faq__wrapper {
+        min-height: auto;
+    }
+    
     .faq-vertical-marquee {
         display: none;
     }
